@@ -16,7 +16,8 @@
 .announcement-bar__message {
   font-family: var(--font-heading-family);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
+  font-size: calc(var(--font-heading-scale) * 1.5rem);
 }
 
 .product-card-wrapper .card,
