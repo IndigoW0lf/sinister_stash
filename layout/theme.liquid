@@ -15,6 +15,11 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
+    {%- comment -%} Sinister Goods custom fonts {%- endcomment -%}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <title>
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -53,6 +58,26 @@
       {{ body_font_italic | font_face: font_display: 'swap' }}
       {{ body_font_bold_italic | font_face: font_display: 'swap' }}
       {{ settings.type_header_font | font_face: font_display: 'swap' }}
+
+      /* Sinister Goods - PS Tier Condensed (display/heading font) */
+      @font-face {
+        font-family: 'PS Tier Condensed';
+        src: url('{{ "ps-tier-condensed.otf" | asset_url }}') format('opentype'),
+             url('{{ "ps-tier-condensed.ttf" | asset_url }}') format('truetype');
+        font-weight: 400 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      /* Sinister Goods - Felony (accent font) */
+      @font-face {
+        font-family: 'Felony';
+        src: url('{{ "felony.woff2" | asset_url }}') format('woff2'),
+             url('{{ "felony.woff" | asset_url }}') format('woff');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
 
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
@@ -100,14 +125,25 @@
       }
 
       :root {
-        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-        --font-body-style: {{ settings.type_body_font.style }};
-        --font-body-weight: {{ settings.type_body_font.weight }};
-        --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
+        /* Sinister Goods font overrides */
+        --font-body-family: 'Space Grotesk', sans-serif;
+        --font-body-style: normal;
+        --font-body-weight: 400;
+        --font-body-weight-bold: 700;
 
-        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
-        --font-heading-style: {{ settings.type_header_font.style }};
-        --font-heading-weight: {{ settings.type_header_font.weight }};
+        --font-heading-family: 'PS Tier Condensed', sans-serif;
+        --font-heading-style: normal;
+        --font-heading-weight: 400;
+
+        --font-accent-family: 'Felony', cursive;
+
+        /* Sinister Goods brand palette */
+        --color-slate: 20, 30, 36;
+        --color-coral: 212, 96, 74;
+        --color-mint: 74, 212, 168;
+        --color-lavender: 184, 160, 232;
+        --color-ice-white: 238, 244, 240;
+        --color-slate-mist: 138, 154, 164;
 
         --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
         --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
