@@ -1,0 +1,147 @@
+<!-- PLACEHOLDER: replace with final hero copy when brand team approves -->
+<div class="sg-hero color-{{ section.settings.color_scheme }}" style="min-height: {{ section.settings.hero_height }};">
+  <div class="sg-hero__content page-width">
+    <p class="sg-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+    <h1 class="sg-hero__headline">
+      {{ section.settings.headline_before }}<span class="coral">{{ section.settings.headline_accent }}</span>
+    </h1>
+    <p class="sg-hero__subhead">{{ section.settings.subhead }}</p>
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link }}" class="button button--primary">
+        {{ section.settings.button_label }} →
+      </a>
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.show_marquee -%}
+    <div class="sg-marquee">
+      <div class="sg-marquee__track">
+        {%- for block in section.blocks -%}
+          <span>{{ block.settings.text }}</span>
+          {%- unless forloop.last %}<span> — </span>{% endunless -%}
+        {%- endfor -%}
+        <span> — </span>
+        {%- for block in section.blocks -%}
+          <span>{{ block.settings.text }}</span>
+          {%- unless forloop.last %}<span> — </span>{% endunless -%}
+        {%- endfor -%}
+        <span> — </span>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+<style>
+  .sg-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(var(--color-background));
+    position: relative;
+  }
+
+  .sg-hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    padding: 4rem 2.4rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Sinister Hero",
+  "class": "sg-hero-section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "hero_height",
+      "label": "Hero height",
+      "options": [
+        { "value": "100vh", "label": "Full screen" },
+        { "value": "85vh", "label": "85% screen" },
+        { "value": "70vh", "label": "70% screen" }
+      ],
+      "default": "100vh"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "SINISTER STASH"
+    },
+    {
+      "type": "textarea",
+      "id": "headline_before",
+      "label": "Headline (before accent)",
+      "default": "Gun culture got built without us. So we built "
+    },
+    {
+      "type": "text",
+      "id": "headline_accent",
+      "label": "Headline accent (Coral text)",
+      "default": "our own."
+    },
+    {
+      "type": "textarea",
+      "id": "subhead",
+      "label": "Subhead",
+      "default": "Stickers. Patches. Apparel. Range gear. For the people gun culture forgot."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link",
+      "default": "shopify://collections/all"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_marquee",
+      "label": "Show scrolling marquee",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "marquee_text",
+      "name": "Marquee saying",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "We weren't invited. We showed up anyway."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sinister Hero",
+      "blocks": [
+        { "type": "marquee_text", "settings": { "text": "We weren't invited. We showed up anyway." } },
+        { "type": "marquee_text", "settings": { "text": "Queer. Armed. Unbothered." } },
+        { "type": "marquee_text", "settings": { "text": "Nobody protects us but us." } },
+        { "type": "marquee_text", "settings": { "text": "Not your range. Not anymore." } },
+        { "type": "marquee_text", "settings": { "text": "Found family. Armed family." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

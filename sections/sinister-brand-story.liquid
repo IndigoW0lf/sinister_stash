@@ -1,0 +1,76 @@
+<!-- PLACEHOLDER: replace copy when brand team finalizes -->
+<div class="sg-brand-story color-{{ section.settings.color_scheme }}">
+  <div class="sg-brand-story__grid">
+    {%- for block in section.blocks -%}
+      <div class="sg-brand-story__column" {{ block.shopify_attributes }}>
+        <div class="sg-brand-story__number">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+        <h3 class="sg-brand-story__title">{{ block.settings.heading }}</h3>
+        <p class="sg-brand-story__text">{{ block.settings.text }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Brand Story",
+  "class": "sg-brand-story-section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Built for us."
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Body text",
+          "default": "Gun culture got built around a specific kind of person. We're building something for everyone else."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Story",
+      "blocks": [
+        {
+          "type": "column",
+          "settings": {
+            "heading": "Built for us.",
+            "text": "Gun culture got built around a specific kind of person. We're building something for everyone else."
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "heading": "Not your gun store.",
+            "text": "No operator aesthetic. No gatekeeping. Real goods for people who actually carry."
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "heading": "For the culture.",
+            "text": "Every product here is a signal. Carry what tells the truth about you."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

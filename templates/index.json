@@ -1,204 +1,125 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "sinister_hero": {
+      "type": "sinister-hero",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "marquee-1": {
+          "type": "marquee_text",
           "settings": {
-            "heading": "SINISTER GOODS",
-            "heading_size": "h0"
+            "text": "We weren't invited. We showed up anyway."
           }
         },
-        "text": {
-          "type": "text",
+        "marquee-2": {
+          "type": "marquee_text",
           "settings": {
-            "text": "Stepping into the space we were never supposed to claim.",
-            "text_style": "body"
+            "text": "Queer. Armed. Unbothered."
           }
         },
-        "button": {
-          "type": "buttons",
+        "marquee-3": {
+          "type": "marquee_text",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "text": "Nobody protects us but us."
+          }
+        },
+        "marquee-4": {
+          "type": "marquee_text",
+          "settings": {
+            "text": "Not your range. Not anymore."
+          }
+        },
+        "marquee-5": {
+          "type": "marquee_text",
+          "settings": {
+            "text": "Found family. Armed family."
           }
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "button"
+        "marquee-1",
+        "marquee-2",
+        "marquee-3",
+        "marquee-4",
+        "marquee-5"
       ],
       "settings": {
-        "image_overlay_opacity": 50,
-        "image_height": "large",
-        "desktop_content_position": "middle-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
         "color_scheme": "scheme-1",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "hero_height": "100vh",
+        "eyebrow": "SINISTER STASH",
+        "headline_before": "Gun culture got built without us. So we built ",
+        "headline_accent": "our own.",
+        "subhead": "Stickers. Patches. Apparel. Range gear. For the people gun culture forgot.",
+        "button_label": "SHOP NOW",
+        "button_link": "shopify:\/\/collections\/all",
+        "show_marquee": true
       }
     },
-    "rich_text": {
-      "type": "rich-text",
+    "brand_story": {
+      "type": "sinister-brand-story",
       "blocks": {
-        "text": {
-          "type": "text",
+        "col-1": {
+          "type": "column",
           "settings": {
-            "text": "<p>Here we are, stepping into the space we were never supposed to claim.<\/p>"
+            "heading": "Built for us.",
+            "text": "Gun culture got built around a specific kind of person. We're building something for everyone else."
+          }
+        },
+        "col-2": {
+          "type": "column",
+          "settings": {
+            "heading": "Not your gun store.",
+            "text": "No operator aesthetic. No gatekeeping. Real goods for people who actually carry."
+          }
+        },
+        "col-3": {
+          "type": "column",
+          "settings": {
+            "heading": "For the culture.",
+            "text": "Every product here is a signal. Carry what tells the truth about you."
           }
         }
       },
       "block_order": [
-        "text"
+        "col-1",
+        "col-2",
+        "col-3"
       ],
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 80,
-        "padding_bottom": 80
+        "color_scheme": "scheme-2"
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
+        "title": "NEW DROPS",
+        "heading_size": "h1",
         "collection": "all",
         "products_to_show": 8,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
-        "show_view_all": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "columns_mobile": "2",
-        "padding_top": 28,
-        "padding_bottom": 36
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
-    "collage": {
-      "type": "collage",
-      "blocks": {
-        "collection-0": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "product": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "second_image": false
-          }
-        },
-        "collection-1": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
-      ],
+    "community_strip": {
+      "type": "sinister-community-strip",
       "settings": {
-        "heading": "Multimedia collage",
-        "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "video": {
-      "type": "video",
-      "settings": {
-        "heading": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "heading_size": "h1",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column1": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column2": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column1",
-        "column2",
-        "column3"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": false,
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "color_scheme": "scheme-5",
+        "text": "FOR THE CULTURE WE'RE BUILDING. — SINISTERSTASH.COM"
       }
     }
   },
   "order": [
-    "image_banner",
-    "rich_text",
+    "sinister_hero",
+    "brand_story",
     "featured_collection",
-    "collage",
-    "video",
-    "multicolumn"
+    "community_strip"
   ]
 }
