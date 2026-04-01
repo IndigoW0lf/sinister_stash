@@ -1,0 +1,470 @@
+/*
+ * SINISTER STASH — Custom theme overrides
+ * Applied over Dawn base theme
+ * Brand tokens: Slate #141E24 / Coral #F0645A / Mint #4AD4A8 / Lavender #B8A0E8
+ * Fonts: PS Tier Condensed (display) / Space Grotesk (body) / Felony (accent)
+ */
+
+/* ============================================
+   GLOBAL OVERRIDES
+   ============================================ */
+
+:root {
+  --buttons-radius: 0px;
+  --buttons-radius-outset: 0px;
+  --inputs-radius: 0px;
+  --inputs-radius-outset: 0px;
+  --variant-pills-radius: 0px;
+  --popup-corner-radius: 0px;
+  --card-corner-radius: 0px;
+  --product-card-corner-radius: 0px;
+  --collection-card-corner-radius: 0px;
+  --blog-card-corner-radius: 0px;
+  --text-boxes-radius: 0px;
+  --media-radius: 0px;
+}
+
+/* Utility class for accent font */
+.font-accent {
+  font-family: var(--font-accent-family);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+/* Primary CTA: Coral bg, white text, all caps */
+.button--primary,
+.shopify-challenge__button,
+.customer button {
+  background-color: rgb(var(--color-coral));
+  color: rgb(var(--color-ice-white));
+  border: 2px solid rgb(var(--color-coral));
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 0;
+}
+
+.button--primary:hover,
+.button--primary:focus-visible {
+  background-color: rgb(var(--color-ice-white));
+  color: rgb(var(--color-coral));
+  border-color: rgb(var(--color-coral));
+}
+
+/* Secondary: transparent bg, white outline */
+.button--secondary {
+  background-color: transparent;
+  color: rgb(var(--color-ice-white));
+  border: 2px solid rgb(var(--color-ice-white));
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 0;
+}
+
+.button--secondary:hover,
+.button--secondary:focus-visible {
+  background-color: rgb(var(--color-ice-white));
+  color: rgb(var(--color-slate));
+  border-color: rgb(var(--color-ice-white));
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+
+a:not(.button) {
+  text-decoration: none;
+}
+
+a:not(.button):hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   ANNOUNCEMENT BAR
+   ============================================ */
+
+.announcement-bar__message {
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================
+   HEADER / NAV
+   ============================================ */
+
+.section-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header__heading-link {
+  font-family: var(--font-heading-family);
+  text-transform: uppercase;
+}
+
+/* Nav links */
+.header__menu-item,
+.header__menu-item span {
+  font-family: var(--font-body-family);
+  font-weight: 500;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.header__menu-item:hover {
+  color: rgb(var(--color-coral));
+}
+
+/* Cart count badge */
+.cart-count-bubble {
+  background-color: rgb(var(--color-coral));
+  color: rgb(var(--color-ice-white));
+}
+
+/* ============================================
+   HERO / IMAGE BANNER
+   ============================================ */
+
+/* Eyebrow text above headline */
+.sg-hero__eyebrow {
+  font-family: var(--font-body-family);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: rgb(var(--color-ice-white));
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 2.4rem;
+}
+
+/* Hero headline */
+.sg-hero__headline {
+  font-family: var(--font-heading-family);
+  font-size: 4.2rem;
+  line-height: 1.0;
+  color: rgb(var(--color-ice-white));
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .sg-hero__headline {
+    font-size: 7.2rem;
+  }
+}
+
+.sg-hero__headline .coral {
+  color: rgb(var(--color-coral));
+}
+
+/* Hero subhead */
+.sg-hero__subhead {
+  font-family: var(--font-body-family);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 3.2rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 750px) {
+  .sg-hero__subhead {
+    font-size: 1.8rem;
+  }
+}
+
+/* Scrolling marquee below hero CTA */
+.sg-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 1.6rem 0;
+  margin-top: 4rem;
+}
+
+.sg-marquee__track {
+  display: inline-block;
+  animation: sg-scroll 30s linear infinite;
+  font-family: var(--font-body-family);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: rgb(var(--color-mint));
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@keyframes sg-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================================
+   BRAND STORY SECTION
+   ============================================ */
+
+.sg-brand-story {
+  background-color: #1C2830;
+  padding: 8rem 0;
+}
+
+@media screen and (max-width: 749px) {
+  .sg-brand-story {
+    padding: 4.8rem 0;
+  }
+}
+
+.sg-brand-story__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  max-width: 128rem;
+  margin: 0 auto;
+  padding: 0 2.4rem;
+}
+
+@media screen and (min-width: 750px) {
+  .sg-brand-story__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4.8rem;
+  }
+}
+
+.sg-brand-story__number {
+  font-family: var(--font-heading-family);
+  font-size: 4.8rem;
+  color: rgb(var(--color-coral));
+  line-height: 1;
+  margin-bottom: 1.6rem;
+}
+
+.sg-brand-story__title {
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: rgb(var(--color-ice-white));
+  margin-bottom: 1.2rem;
+}
+
+.sg-brand-story__text {
+  font-family: var(--font-body-family);
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+}
+
+/* ============================================
+   COMMUNITY / SOCIAL PROOF STRIP
+   ============================================ */
+
+.sg-community-strip {
+  background-color: rgb(var(--color-coral));
+  padding: 3.2rem 2.4rem;
+  text-align: center;
+}
+
+.sg-community-strip__text {
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: rgb(var(--color-ice-white));
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================
+   PRODUCT CARDS
+   ============================================ */
+
+.card-wrapper {
+  border-radius: 0;
+}
+
+.card {
+  border-radius: 0;
+}
+
+/* Product price in Coral */
+.price-item--regular,
+.price-item--sale {
+  color: rgb(var(--color-coral));
+  font-family: var(--font-body-family);
+}
+
+/* New badge: Mint bg, Slate text */
+.badge--new,
+.badge[data-badge="new"] {
+  background-color: rgb(var(--color-mint));
+  color: rgb(var(--color-slate));
+}
+
+/* Sold out: reduced opacity */
+.card--sold-out {
+  opacity: 0.5;
+}
+
+/* Product title on cards */
+.card__heading,
+.card__heading a {
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+/* ============================================
+   PRODUCT PAGE
+   ============================================ */
+
+/* Product title */
+.product__title {
+  font-family: var(--font-heading-family);
+  font-size: 3.2rem;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 750px) {
+  .product__title {
+    font-size: 4.8rem;
+  }
+}
+
+/* Product price */
+.product__info-wrapper .price-item {
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  font-size: 2.4rem;
+  color: rgb(var(--color-coral));
+}
+
+/* Variant selectors: flat rectangular */
+.product-form__input input[type="radio"] + label {
+  border-radius: 0;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.product-form__input input[type="radio"]:checked + label {
+  background-color: rgb(var(--color-coral));
+  color: rgb(var(--color-ice-white));
+  border-color: rgb(var(--color-coral));
+}
+
+/* ============================================
+   COLLECTION PAGE
+   ============================================ */
+
+/* Collection title */
+.collection-hero__title {
+  font-family: var(--font-heading-family);
+  font-size: 4.2rem;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 750px) {
+  .collection-hero__title {
+    font-size: 6.4rem;
+  }
+}
+
+/* Filter pills */
+.facet-checkbox,
+.active-facets__button {
+  border-radius: 0;
+}
+
+/* Active filter */
+.active-facets__button {
+  background-color: rgb(var(--color-coral));
+  color: rgb(var(--color-ice-white));
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+  background-color: #0E161B;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__content-bottom {
+  font-size: 1.2rem;
+  opacity: 0.4;
+}
+
+/* Email signup label */
+.footer .newsletter-form__field-label {
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: rgb(var(--color-mint));
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Email input */
+.footer .field__input {
+  background-color: rgb(var(--color-slate));
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgb(var(--color-ice-white));
+  border-radius: 0;
+}
+
+/* ============================================
+   CART DRAWER
+   ============================================ */
+
+.cart-drawer__heading {
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Cart prices */
+.cart-item__price,
+.totals__subtotal-value {
+  color: rgb(var(--color-coral));
+}
+
+/* Remove link */
+cart-remove-button a {
+  opacity: 0.5;
+}
+
+cart-remove-button a:hover {
+  color: rgb(var(--color-coral));
+  opacity: 1;
+}
+
+/* ============================================
+   SECTION SPACING
+   ============================================ */
+
+@media screen and (min-width: 750px) {
+  .section-template--*:not(.shopify-section--header) > * {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* ============================================
+   GLOBAL — NO GRADIENTS, NO SHADOWS
+   ============================================ */
+
+.gradient {
+  background: none !important;
+}
+
+/* Kill any box shadows Dawn might add */
+.card--card,
+.card--standard {
+  box-shadow: none;
+}

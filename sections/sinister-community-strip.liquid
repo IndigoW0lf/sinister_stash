@@ -1,0 +1,30 @@
+<!-- PLACEHOLDER: replace with community content when ready -->
+<div class="sg-community-strip color-{{ section.settings.color_scheme }}">
+  <p class="sg-community-strip__text">{{ section.settings.text }}</p>
+</div>
+
+{% schema %}
+{
+  "name": "Community Strip",
+  "class": "sg-community-strip-section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-5"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Strip text",
+      "default": "FOR THE CULTURE WE'RE BUILDING. — SINISTERSTASH.COM"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community Strip"
+    }
+  ]
+}
+{% endschema %}

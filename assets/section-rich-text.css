@@ -84,18 +84,3 @@
 .rich-text__blocks.right .rich-text__buttons {
   justify-content: flex-end;
 }
-
-/* Sinister Goods - standalone tagline treatment */
-.rich-text--full-width .rich-text__text p:only-child {
-  font-family: var(--font-accent-family);
-  font-size: 2.4rem;
-  line-height: 1.4;
-  letter-spacing: 0.01em;
-  opacity: 0.9;
-}
-
-@media screen and (min-width: 750px) {
-  .rich-text--full-width .rich-text__text p:only-child {
-    font-size: 3.2rem;
-  }
-}
