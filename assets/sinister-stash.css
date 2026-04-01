@@ -89,12 +89,19 @@ a:not(.button):hover {
    ANNOUNCEMENT BAR
    ============================================ */
 
+.utility-bar.color-scheme-5,
+.utility-bar.color-scheme-5 .announcement-bar__message {
+  background-color: #F0645A;
+  color: #eef4f0 !important;
+}
+
 .announcement-bar__message {
   font-family: var(--font-body-family);
   font-weight: 700;
   font-size: 1.3rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  color: inherit;
 }
 
 /* ============================================
@@ -394,41 +401,62 @@ a:not(.button):hover {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Footer headings */
-.footer-block__heading,
-.footer h2,
-.footer h3 {
-  font-family: var(--font-heading-family);
-  color: rgb(var(--color-lavender)) !important;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+/* Force all footer text to readable Slate Mist */
+.footer,
+.footer * {
+  --color-foreground: 138, 154, 164;
 }
 
-/* Footer links */
+/* Footer headings — lavender, fully visible */
+.footer-block__heading,
+.footer h2,
+.footer h3,
+.footer .heading {
+  font-family: var(--font-heading-family);
+  color: #B8A0E8 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 1 !important;
+}
+
+/* Footer links — Slate Mist, fully readable */
 .footer a,
-.footer .list-menu__item--link {
-  color: rgba(238, 244, 240, 0.7) !important;
+.footer .list-menu__item--link,
+.footer li a {
+  color: #8a9aa4 !important;
+  opacity: 1 !important;
 }
 
 .footer a:hover,
-.footer .list-menu__item--link:hover {
-  color: rgb(var(--color-coral)) !important;
+.footer .list-menu__item--link:hover,
+.footer li a:hover {
+  color: #F0645A !important;
 }
 
-/* Footer body text */
+/* Footer body text — Slate Mist at full opacity */
+.footer p,
 .footer .footer-block__details-content p,
-.footer .rte {
-  color: rgba(238, 244, 240, 0.65) !important;
+.footer .rte,
+.footer .rte p {
+  color: #8a9aa4 !important;
+  opacity: 1 !important;
 }
 
-/* Subscribe heading */
-.footer .footer__newsletter h2 {
-  color: rgb(var(--color-mint)) !important;
+/* Subscribe heading — mint */
+.footer .footer__newsletter h2,
+.footer .newsletter-form__message-text {
+  color: #4AD4A8 !important;
+  opacity: 1 !important;
 }
 
 .footer__content-bottom {
   font-size: 1.2rem;
-  opacity: 0.4;
+  opacity: 0.5;
+}
+
+.footer__content-bottom,
+.footer__content-bottom a {
+  color: #8a9aa4 !important;
 }
 
 /* Email signup label */
