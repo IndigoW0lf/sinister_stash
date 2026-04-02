@@ -54,6 +54,15 @@ main#MainContent [class*="color-scheme-"],
   color: #eef4f0 !important;
 }
 
+/* Hero section: transparent so ghost text shows through */
+.sg-hero-section,
+.sg-hero-section .shopify-section,
+.sg-hero,
+.sg-hero .sg-hero__content,
+.sg-hero .page-width {
+  background-color: transparent !important;
+}
+
 /* Utility class for accent font */
 .font-accent {
   font-family: var(--font-accent-family);
@@ -119,18 +128,15 @@ a:not(.button):hover {
    ANNOUNCEMENT BAR
    ============================================ */
 
-/* Force announcement bar coral — full width */
+/* Force announcement bar coral — full width + override CSS vars */
 .shopify-section-announcement-bar,
-.shopify-section-announcement-bar .color-scheme-1,
-.shopify-section-announcement-bar .color-scheme-2,
-.shopify-section-announcement-bar .color-scheme-3,
-.shopify-section-announcement-bar .color-scheme-4,
-.shopify-section-announcement-bar .color-scheme-5,
 .shopify-section-announcement-bar [class*="color-scheme-"],
 .utility-bar,
 .announcement-bar,
 .utility-bar .announcement-bar__message,
 .shopify-section-header-group .utility-bar {
+  --color-background: 240, 100, 90 !important;
+  --color-foreground: 238, 244, 240 !important;
   background-color: #F0645A !important;
   color: #eef4f0 !important;
 }
