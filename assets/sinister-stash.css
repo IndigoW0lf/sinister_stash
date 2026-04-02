@@ -89,12 +89,22 @@ a:not(.button):hover {
    ANNOUNCEMENT BAR
    ============================================ */
 
+/* Force announcement bar coral */
+.utility-bar,
+.announcement-bar,
+.utility-bar .announcement-bar__message,
+.shopify-section-header-group .utility-bar {
+  background-color: #F0645A !important;
+  color: #eef4f0 !important;
+}
+
 .announcement-bar__message {
   font-family: var(--font-body-family);
   font-weight: 700;
   font-size: 1.3rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  color: #eef4f0 !important;
 }
 
 /* ============================================
