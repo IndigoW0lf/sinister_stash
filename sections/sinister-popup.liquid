@@ -1,0 +1,202 @@
+{% comment %}
+  Sinister Stash — Email Signup Popup
+  Shows once per visitor via cookie. Collects email for newsletter.
+{% endcomment %}
+
+{{ 'sinister-popup.css' | asset_url | stylesheet_tag }}
+
+<div id="sg-popup-overlay" class="sg-popup-overlay" style="display:none;" role="dialog" aria-modal="true" aria-label="Email signup">
+  <div class="sg-popup">
+    <button class="sg-popup__close" aria-label="Close popup" onclick="sgClosePopup()">&times;</button>
+
+    <div class="sg-popup__border-accent"></div>
+
+    <div class="sg-popup__content">
+      <p class="sg-popup__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="sg-popup__headline">{{ section.settings.headline }}</h2>
+      <p class="sg-popup__subhead">{{ section.settings.subhead }}</p>
+
+      <div class="sg-popup__form-wrapper">
+        {% form 'customer', id: 'sg-popup-form' %}
+          <input type="hidden" name="contact[tags]" value="popup,welcome-offer">
+          <div class="sg-popup__field-row">
+            <input
+              type="email"
+              name="contact[email]"
+              placeholder="YOUR EMAIL"
+              required
+              class="sg-popup__input"
+              aria-label="Email address"
+            >
+            <button type="submit" class="sg-popup__submit">
+              {{ section.settings.button_label }}
+            </button>
+          </div>
+        {% endform %}
+      </div>
+
+      <p class="sg-popup__code-hint">{{ section.settings.code_hint }}</p>
+      <p class="sg-popup__fine-print">{{ section.settings.fine_print }}</p>
+    </div>
+
+    <div class="sg-popup__border-accent sg-popup__border-accent--bottom"></div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var COOKIE_NAME = 'sg_popup_seen';
+    var DELAY_MS = {{ section.settings.delay_seconds | times: 1000 }};
+
+    function getCookie(name) {
+      var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? match[2] : null;
+    }
+
+    function setCookie(name, value, days) {
+      var d = new Date();
+      d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+      document.cookie = name + '=' + value + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+    }
+
+    if (!getCookie(COOKIE_NAME)) {
+      setTimeout(function() {
+        var overlay = document.getElementById('sg-popup-overlay');
+        if (overlay) {
+          overlay.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+      }, DELAY_MS);
+    }
+
+    window.sgClosePopup = function() {
+      var overlay = document.getElementById('sg-popup-overlay');
+      if (overlay) {
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+        setCookie(COOKIE_NAME, '1', {{ section.settings.cookie_days }});
+      }
+    };
+
+    // Close on overlay click
+    var overlay = document.getElementById('sg-popup-overlay');
+    if (overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+          window.sgClosePopup();
+        }
+      });
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        window.sgClosePopup();
+      }
+    });
+
+    // Handle form submit — show success state
+    var form = document.getElementById('sg-popup-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var formData = new FormData(form);
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        }).then(function() {
+          var content = form.closest('.sg-popup__content');
+          if (content) {
+            content.innerHTML = '<p class="sg-popup__eyebrow">YOU\'RE IN.</p>' +
+              '<h2 class="sg-popup__headline">WELCOME<br>TO THE<br>STASH.</h2>' +
+              '<p class="sg-popup__subhead">Use code <span class="sg-popup__code">{{ section.settings.discount_code }}</span> at checkout for {{ section.settings.discount_amount }} off your first order.</p>' +
+              '<button class="sg-popup__submit" onclick="sgClosePopup()">START SHOPPING</button>';
+          }
+          setCookie(COOKIE_NAME, '1', {{ section.settings.cookie_days }});
+        });
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Email Popup",
+  "class": "sg-popup-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "SINISTER STASH"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "GET 10% OFF YOUR FIRST ORDER."
+    },
+    {
+      "type": "textarea",
+      "id": "subhead",
+      "label": "Subhead",
+      "default": "New drops. First access. No spam. Just the culture we're building."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "I'M IN →"
+    },
+    {
+      "type": "text",
+      "id": "discount_code",
+      "label": "Discount code to show after signup",
+      "default": "LOADUP10"
+    },
+    {
+      "type": "text",
+      "id": "discount_amount",
+      "label": "Discount description",
+      "default": "10%"
+    },
+    {
+      "type": "text",
+      "id": "code_hint",
+      "label": "Code hint below form",
+      "default": "Your code arrives instantly. No waiting."
+    },
+    {
+      "type": "text",
+      "id": "fine_print",
+      "label": "Fine print",
+      "default": "Unsubscribe anytime. We're not clingy."
+    },
+    {
+      "type": "range",
+      "id": "delay_seconds",
+      "label": "Delay before showing (seconds)",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "cookie_days",
+      "label": "Days before showing again",
+      "min": 1,
+      "max": 90,
+      "step": 1,
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "Email Popup"
+    }
+  ]
+}
+{% endschema %}
