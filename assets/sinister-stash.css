@@ -89,7 +89,14 @@ a:not(.button):hover {
    ANNOUNCEMENT BAR
    ============================================ */
 
-/* Force announcement bar coral */
+/* Force announcement bar coral — full width */
+.shopify-section-announcement-bar,
+.shopify-section-announcement-bar .color-scheme-1,
+.shopify-section-announcement-bar .color-scheme-2,
+.shopify-section-announcement-bar .color-scheme-3,
+.shopify-section-announcement-bar .color-scheme-4,
+.shopify-section-announcement-bar .color-scheme-5,
+.shopify-section-announcement-bar [class*="color-scheme-"],
 .utility-bar,
 .announcement-bar,
 .utility-bar .announcement-bar__message,
