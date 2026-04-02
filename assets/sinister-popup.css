@@ -1,0 +1,229 @@
+/*
+ * SINISTER STASH — Email Signup Popup
+ * Lavender border accent, mint details, brand dark bg
+ */
+
+.sg-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: rgba(10, 15, 18, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: sg-popup-fade 0.3s ease-out;
+}
+
+@keyframes sg-popup-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.sg-popup {
+  position: relative;
+  background-color: #141e24;
+  max-width: 480px;
+  width: 100%;
+  padding: 0;
+  animation: sg-popup-slide 0.4s ease-out;
+  overflow: hidden;
+}
+
+@keyframes sg-popup-slide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Lavender border accents — top and bottom bars */
+.sg-popup__border-accent {
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    #B8A0E8 0%,
+    #4AD4A8 50%,
+    #B8A0E8 100%
+  );
+}
+
+.sg-popup__border-accent--bottom {
+  margin-top: 0;
+}
+
+/* Close button */
+.sg-popup__close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.6rem;
+  background: none;
+  border: none;
+  color: rgba(238, 244, 240, 0.5);
+  font-size: 2.4rem;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 1;
+  padding: 0.4rem;
+  transition: color 0.2s;
+}
+
+.sg-popup__close:hover {
+  color: #F0645A;
+}
+
+/* Content area */
+.sg-popup__content {
+  padding: 3.6rem 3.2rem 3.2rem;
+  text-align: center;
+}
+
+/* Eyebrow */
+.sg-popup__eyebrow {
+  font-family: var(--font-body-family), 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #4AD4A8;
+  margin-bottom: 1.2rem;
+}
+
+/* Headline */
+.sg-popup__headline {
+  font-family: var(--font-heading-family), 'PS Tier Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 3.6rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: #eef4f0;
+  margin-bottom: 1.6rem;
+}
+
+/* Subhead */
+.sg-popup__subhead {
+  font-family: var(--font-body-family), 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: #8a9aa4;
+  margin-bottom: 2.4rem;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Form row */
+.sg-popup__field-row {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.6rem;
+}
+
+.sg-popup__input {
+  flex: 1;
+  background-color: #1a2830;
+  border: 2px solid rgba(184, 160, 232, 0.3);
+  border-right: none;
+  color: #eef4f0;
+  font-family: var(--font-body-family), 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.06em;
+  padding: 1.4rem 1.6rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sg-popup__input::placeholder {
+  color: rgba(138, 154, 164, 0.6);
+}
+
+.sg-popup__input:focus {
+  border-color: #B8A0E8;
+}
+
+.sg-popup__submit {
+  background-color: #F0645A;
+  color: #eef4f0;
+  border: 2px solid #F0645A;
+  font-family: var(--font-body-family), 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 1.4rem 2.4rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.sg-popup__submit:hover {
+  background-color: #eef4f0;
+  color: #F0645A;
+}
+
+/* Discount code display (success state) */
+.sg-popup__code {
+  display: inline-block;
+  background-color: #1a2830;
+  border: 2px solid #B8A0E8;
+  color: #B8A0E8;
+  font-family: var(--font-body-family), 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 0.15em;
+  padding: 0.8rem 2rem;
+  margin: 0.8rem 1.2rem 1.6rem;
+}
+
+/* Code hint */
+.sg-popup__code-hint {
+  font-family: var(--font-body-family), 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  color: #4AD4A8;
+  margin-bottom: 0.4rem;
+}
+
+/* Fine print */
+.sg-popup__fine-print {
+  font-family: var(--font-body-family), 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(138, 154, 164, 0.5);
+  font-style: italic;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 480px) {
+  .sg-popup__content {
+    padding: 2.8rem 2rem 2.4rem;
+  }
+
+  .sg-popup__headline {
+    font-size: 2.8rem;
+  }
+
+  .sg-popup__field-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .sg-popup__input {
+    border-right: 2px solid rgba(184, 160, 232, 0.3);
+    border-bottom: none;
+  }
+
+  .sg-popup__input:focus {
+    border-color: #B8A0E8;
+  }
+
+  .sg-popup__submit {
+    width: 100%;
+    padding: 1.6rem;
+  }
+}
