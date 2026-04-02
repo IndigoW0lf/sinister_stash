@@ -24,25 +24,6 @@
   --media-radius: 0px;
 }
 
-/* Force dark background on entire page */
-body,
-.color-scheme-1 {
-  background-color: #141e24 !important;
-  color: #eef4f0 !important;
-}
-
-/* Catch any section without a color scheme */
-.shopify-section:not([class*="color-"]) {
-  background-color: #141e24;
-  color: #eef4f0;
-}
-
-/* Main content area */
-main#MainContent {
-  background-color: #141e24;
-  color: #eef4f0;
-}
-
 /* Utility class for accent font */
 .font-accent {
   font-family: var(--font-accent-family);
@@ -108,19 +89,12 @@ a:not(.button):hover {
    ANNOUNCEMENT BAR
    ============================================ */
 
-.utility-bar.color-scheme-5,
-.utility-bar.color-scheme-5 .announcement-bar__message {
-  background-color: #F0645A;
-  color: #eef4f0 !important;
-}
-
 .announcement-bar__message {
   font-family: var(--font-body-family);
   font-weight: 700;
   font-size: 1.3rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: inherit;
 }
 
 /* ============================================
@@ -154,6 +128,16 @@ a:not(.button):hover {
 .cart-count-bubble {
   background-color: rgb(var(--color-coral));
   color: rgb(var(--color-ice-white));
+}
+
+/* Push header logo left */
+.header__heading {
+  margin-right: auto;
+}
+
+.header__heading-logo {
+  max-width: 220px;
+  height: auto;
 }
 
 /* ============================================
@@ -267,7 +251,7 @@ a:not(.button):hover {
 .sg-brand-story__number {
   font-family: var(--font-heading-family);
   font-size: 4.8rem;
-  color: rgb(var(--color-lavender));
+  color: rgb(var(--color-coral));
   line-height: 1;
   margin-bottom: 1.6rem;
 }
@@ -420,62 +404,9 @@ a:not(.button):hover {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Force all footer text to readable Slate Mist */
-.footer,
-.footer * {
-  --color-foreground: 138, 154, 164;
-}
-
-/* Footer headings — lavender, fully visible */
-.footer-block__heading,
-.footer h2,
-.footer h3,
-.footer .heading {
-  font-family: var(--font-heading-family);
-  color: #B8A0E8 !important;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  opacity: 1 !important;
-}
-
-/* Footer links — Slate Mist, fully readable */
-.footer a,
-.footer .list-menu__item--link,
-.footer li a {
-  color: #8a9aa4 !important;
-  opacity: 1 !important;
-}
-
-.footer a:hover,
-.footer .list-menu__item--link:hover,
-.footer li a:hover {
-  color: #F0645A !important;
-}
-
-/* Footer body text — Slate Mist at full opacity */
-.footer p,
-.footer .footer-block__details-content p,
-.footer .rte,
-.footer .rte p {
-  color: #8a9aa4 !important;
-  opacity: 1 !important;
-}
-
-/* Subscribe heading — mint */
-.footer .footer__newsletter h2,
-.footer .newsletter-form__message-text {
-  color: #4AD4A8 !important;
-  opacity: 1 !important;
-}
-
 .footer__content-bottom {
   font-size: 1.2rem;
-  opacity: 0.5;
-}
-
-.footer__content-bottom,
-.footer__content-bottom a {
-  color: #8a9aa4 !important;
+  opacity: 0.4;
 }
 
 /* Email signup label */
@@ -521,39 +452,6 @@ cart-remove-button a {
 cart-remove-button a:hover {
   color: rgb(var(--color-coral));
   opacity: 1;
-}
-
-/* ============================================
-   PREDICTIVE SEARCH / SEARCH RESULTS
-   ============================================ */
-
-predictive-search .predictive-search__result-group .predictive-search__heading,
-predictive-search .predictive-search__item a,
-predictive-search .predictive-search__item-heading,
-.predictive-search .predictive-search__item a,
-.search__results a,
-.search-modal__content a {
-  font-family: var(--font-body-family) !important;
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: 0;
-}
-
-predictive-search .predictive-search__item-heading,
-.predictive-search .predictive-search__item-heading {
-  font-family: var(--font-body-family) !important;
-  font-weight: 700;
-  font-size: 1.5rem;
-}
-
-predictive-search .predictive-search__heading,
-.predictive-search .predictive-search__heading {
-  font-family: var(--font-body-family) !important;
-  font-weight: 700;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #8a9aa4;
 }
 
 /* ============================================

@@ -53,10 +53,10 @@
       "settings": {
         "color_scheme": "scheme-1",
         "hero_height": "100vh",
-        "eyebrow": "SINISTER STASH",
+        "eyebrow": "",
         "headline_before": "Gun culture got built without us. So we built ",
         "headline_accent": "our own.",
-        "subhead": "Stepping into the space they never expected us to claim.",
+        "subhead": "Stickers. Patches. Apparel. Range gear. For the people gun culture forgot.",
         "button_label": "SHOP NOW",
         "button_link": "shopify:\/\/collections\/all",
         "show_marquee": true
@@ -75,7 +75,7 @@
         "col-2": {
           "type": "column",
           "settings": {
-            "heading": "No permission needed.",
+            "heading": "Not your gun store.",
             "text": "No operator aesthetic. No gatekeeping. Real goods for people who actually carry."
           }
         },
