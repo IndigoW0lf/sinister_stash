@@ -17,7 +17,7 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "FOR THE CULTURE WE'RE BUILDING. — FREE SHIPPING ON ORDERS OVER $50",
+            "text": "Welcome to our store",
             "link": ""
           }
         }
@@ -34,7 +34,7 @@
         "mobile_logo_position": "center",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
-        "sticky_header_type": "always",
+        "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
         "color_scheme": "scheme-1",
         "enable_country_selector": true,
