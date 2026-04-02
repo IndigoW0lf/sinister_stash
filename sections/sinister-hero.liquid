@@ -1,5 +1,6 @@
 <!-- PLACEHOLDER: replace with final hero copy when brand team approves -->
 <div class="sg-hero color-{{ section.settings.color_scheme }}" style="min-height: {{ section.settings.hero_height }};">
+  <div class="sg-hero__ghost" aria-hidden="true">SINISTER</div>
   <div class="sg-hero__content page-width">
     <p class="sg-hero__eyebrow">{{ section.settings.eyebrow }}</p>
     <h1 class="sg-hero__headline">
@@ -40,6 +41,25 @@
     text-align: center;
     background-color: rgb(var(--color-background));
     position: relative;
+    overflow: hidden;
+  }
+
+  .sg-hero__ghost {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-heading-family), 'PS Tier Condensed', sans-serif;
+    font-weight: 400;
+    font-size: 22vw;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    z-index: 0;
   }
 
   .sg-hero__content {
@@ -49,6 +69,8 @@
     flex: 1;
     justify-content: center;
     padding: 4rem 2.4rem;
+    position: relative;
+    z-index: 1;
   }
 </style>
 
