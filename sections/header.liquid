@@ -160,7 +160,15 @@
                 }}
               </div>
             {%- else -%}
-              <span class="h2">{{ shop.name }}</span>
+              <img
+                src="{{ 'sinister-stash-logo.svg' | asset_url }}"
+                alt="{{ shop.name }}"
+                class="header__heading-logo motion-reduce"
+                width="220"
+                height="40"
+                loading="eager"
+                style="max-width: 220px; height: auto;"
+              >
             {%- endif -%}
           </a>
       {%- if request.page_type == 'index' -%}
@@ -200,7 +208,15 @@
                 }}
               </div>
             {%- else -%}
-              <span class="h2">{{ shop.name }}</span>
+              <img
+                src="{{ 'sinister-stash-logo.svg' | asset_url }}"
+                alt="{{ shop.name }}"
+                class="header__heading-logo motion-reduce"
+                width="220"
+                height="40"
+                loading="eager"
+                style="max-width: 220px; height: auto;"
+              >
             {%- endif -%}
           </a>
       {%- if request.page_type == 'index' -%}
