@@ -24,19 +24,32 @@
   --media-radius: 0px;
 }
 
-/* GLOBAL DARK BACKGROUND — override everything Shopify tries */
+/* GLOBAL DARK BACKGROUND — override Dawn's CSS custom properties */
+/* Dawn uses --color-background: R,G,B then rgb(var(--color-background)) */
+/* We must override the custom property itself, not just background-color */
+:root,
 body,
-body .color-scheme-1,
-body .color-scheme-2,
+.color-scheme-1,
+.color-scheme-2,
+[class*="color-scheme-"] {
+  --color-background: 20, 30, 36 !important;
+  --color-foreground: 238, 244, 240 !important;
+  --gradient-background: none !important;
+}
+
+/* Belt-and-suspenders: also force background-color with hex */
+body,
 body [class*="color-scheme-"],
 main#MainContent,
 main#MainContent > .shopify-section,
 main#MainContent [class*="color-scheme-"],
 .shopify-section,
-.section-template--*,
 .collection-list,
 .product-grid-container,
-.page-width {
+.page-width,
+.template-product,
+.template-collection,
+.template-index {
   background-color: #141e24 !important;
   color: #eef4f0 !important;
 }
