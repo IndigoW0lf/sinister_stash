@@ -128,17 +128,24 @@ a:not(.button):hover {
    ANNOUNCEMENT BAR
    ============================================ */
 
-/* Force announcement bar coral — full width + override CSS vars */
-.shopify-section-announcement-bar,
-.shopify-section-announcement-bar [class*="color-scheme-"],
-.utility-bar,
-.announcement-bar,
-.utility-bar .announcement-bar__message,
-.shopify-section-header-group .utility-bar {
-  --color-background: 240, 100, 90 !important;
-  --color-foreground: 238, 244, 240 !important;
-  background-color: #F0645A !important;
-  color: #eef4f0 !important;
+/* Announcement bar — color set dynamically via JS rotation (mint/coral/lavender).
+   Mint fallback ensures no flash of wrong color before JS runs.
+   Targets the Shopify section wrapper + all inner elements to eliminate edge gaps. */
+.announcement-bar-section,
+.announcement-bar-section .utility-bar,
+.announcement-bar-section [class*="color-scheme"],
+.shopify-section-group-header-group .utility-bar {
+  background-color: #4AD4A8 !important;
+  color: #141E24 !important;
+  --color-background: 74, 212, 168 !important;
+  --color-foreground: 20, 30, 36 !important;
+}
+
+/* Kill the side padding that exposes the wrapper background */
+.utility-bar .page-width,
+body:has(.section-header .header:not(.drawer-menu)) .utility-bar .page-width {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .announcement-bar__message {
@@ -147,7 +154,7 @@ a:not(.button):hover {
   font-size: 1.3rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #eef4f0 !important;
+  color: inherit !important;
 }
 
 /* ============================================

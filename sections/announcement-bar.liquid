@@ -20,7 +20,7 @@
 
 <div
   class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}"
-  style="background-color: #F0645A !important; color: #ffffff !important; --color-background: 240, 100, 90 !important; --color-foreground: 255, 255, 255 !important;"
+  id="announcement-bar-rotating"
 >
   <div class="page-width utility-bar__grid{% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}">
     {%- if section.settings.show_social and social_icons -%}
@@ -162,6 +162,36 @@
     </div>
   </div>
 </div>
+
+<script>
+  (function() {
+    var colors = [
+      { bg: '#4AD4A8', rgb: '74, 212, 168', text: '#141E24', textRgb: '20, 30, 36' },
+      { bg: '#F0645A', rgb: '240, 100, 90', text: '#eef4f0', textRgb: '238, 244, 240' },
+      { bg: '#B8A0E8', rgb: '184, 160, 232', text: '#141E24', textRgb: '20, 30, 36' }
+    ];
+    var hoursPerColor = 2;
+    var index = Math.floor(new Date().getHours() / hoursPerColor) % colors.length;
+    var c = colors[index];
+    var bar = document.getElementById('announcement-bar-rotating');
+    if (bar) {
+      bar.style.setProperty('background-color', c.bg, 'important');
+      bar.style.setProperty('color', c.text, 'important');
+      bar.style.setProperty('--color-background', c.rgb, 'important');
+      bar.style.setProperty('--color-foreground', c.textRgb, 'important');
+      /* Color the Shopify section wrapper + any color-scheme elements to eliminate edge gaps */
+      var section = bar.closest('.shopify-section');
+      if (section) {
+        section.style.setProperty('background-color', c.bg, 'important');
+        var schemeEls = section.querySelectorAll('[class*="color-scheme"]');
+        for (var i = 0; i < schemeEls.length; i++) {
+          schemeEls[i].style.setProperty('background-color', c.bg, 'important');
+          schemeEls[i].style.setProperty('color', c.text, 'important');
+        }
+      }
+    }
+  })();
+</script>
 
 {% schema %}
 {
