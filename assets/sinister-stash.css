@@ -128,26 +128,8 @@ a:not(.button):hover {
    ANNOUNCEMENT BAR
    ============================================ */
 
-/* Announcement bar — color set dynamically via JS rotation (mint/coral/lavender).
-   Mint fallback ensures no flash of wrong color before JS runs.
-   Targets the Shopify section wrapper + all inner elements to eliminate edge gaps. */
-.announcement-bar-section,
-.announcement-bar-section .utility-bar,
-.announcement-bar-section [class*="color-scheme"],
-.shopify-section-group-header-group .utility-bar {
-  background: #4AD4A8 !important;
-  --gradient-background: #4AD4A8 !important;
-  color: #141E24 !important;
-  --color-background: 74, 212, 168 !important;
-  --color-foreground: 20, 30, 36 !important;
-}
-
-/* Kill the side padding that exposes the wrapper background */
-.utility-bar .page-width,
-body:has(.section-header .header:not(.drawer-menu)) .utility-bar .page-width {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
+/* Announcement bar — uses scheme-5 (mint) natively via Dawn color system.
+   No overrides needed; settings_data.json defines the colors. */
 
 .announcement-bar__message {
   font-family: var(--font-body-family);
