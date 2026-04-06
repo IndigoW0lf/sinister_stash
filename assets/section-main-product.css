@@ -1492,3 +1492,22 @@ a.product__text {
     border: none;
   }
 }
+
+/* US-only shipping notice */
+.sg-shipping-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: rgb(var(--color-foreground));
+  opacity: 0.7;
+  border: 1px solid rgba(var(--color-foreground), 0.15);
+  border-radius: 4px;
+}
+
+.sg-shipping-notice svg {
+  flex-shrink: 0;
+}
