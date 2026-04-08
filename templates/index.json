@@ -75,7 +75,7 @@
         "col-2": {
           "type": "column",
           "settings": {
-            "heading": "Not like your local gun store.",
+            "heading": "Not your gun store.",
             "text": "No operator aesthetic. No gatekeeping. Real goods for people who actually carry."
           }
         },
@@ -121,14 +121,14 @@
       "type": "sinister-community-strip",
       "settings": {
         "color_scheme": "scheme-5",
-        "text": "FOR THE CULTURE WE'RE BUILDING. — SINISTERSTASH.COM"
+        "text": "FOR THE CULTURE WE'RE BUILDING. \u2014 SINISTERSTASH.COM"
       }
     }
   },
   "order": [
     "sinister_hero",
-    "brand_story",
     "featured_collection",
+    "brand_story",
     "community_strip"
   ]
 }
