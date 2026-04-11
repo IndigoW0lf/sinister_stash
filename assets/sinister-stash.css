@@ -1066,6 +1066,31 @@ body .sg-why-section .breadcrumbs__list {
 }
 
 /* ----------------------------------------
+   CA AB 1263 Restriction Notice
+---------------------------------------- */
+.sg-ca-notice {
+  display: none;
+  background-color: #1C2830;
+  border-left: 3px solid #F0645A;
+  padding: 16px 20px;
+  margin-top: 16px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  color: #eef4f0;
+  line-height: 1.6;
+  border-radius: 2px;
+}
+
+.sg-ca-notice strong {
+  color: #F0645A;
+}
+
+.sg-ca-notice a {
+  color: #4AD4A8;
+  text-decoration: underline;
+}
+
+/* ----------------------------------------
    Responsive
 ---------------------------------------- */
 @media screen and (max-width: 749px) {

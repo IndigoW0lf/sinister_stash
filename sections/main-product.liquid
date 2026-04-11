@@ -491,6 +491,9 @@
                     <span>This item ships within the United States only.</span>
                   </div>
                 {%- endif -%}
+                {%- if product.tags contains 'ca-restricted' -%}
+                  {%- render 'ca-backplate-notice' -%}
+                {%- endif -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
