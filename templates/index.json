@@ -30,12 +30,6 @@
             "text": "Nobody protects us but us."
           }
         },
-        "marquee-4": {
-          "type": "marquee_text",
-          "settings": {
-            "text": "Not your range. Not anymore."
-          }
-        },
         "marquee-5": {
           "type": "marquee_text",
           "settings": {
@@ -47,7 +41,6 @@
         "marquee-1",
         "marquee-2",
         "marquee-3",
-        "marquee-4",
         "marquee-5"
       ],
       "settings": {

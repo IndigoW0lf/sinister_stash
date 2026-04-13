@@ -21,6 +21,45 @@
         "cta_link": "/pages/contact"
       },
       "blocks": {
+        "cat_first_principles": {
+          "type": "category",
+          "settings": {
+            "heading": "First Principles",
+            "description": "New to firearms? Start here. No gatekeeping, no judgment — just solid fundamentals from sources that will actually meet you where you are."
+          }
+        },
+        "res_cornered_cat": {
+          "type": "resource",
+          "settings": {
+            "name": "The Cornered Cat",
+            "description": "Comprehensive guide to guns for women and new owners. Safe handling, storage, choosing your first firearm. One of the most thorough, no-nonsense resources on the internet.",
+            "url": "https://www.corneredcat.com/"
+          }
+        },
+        "res_obs_trainer": {
+          "type": "resource",
+          "settings": {
+            "name": "Operation Blazing Sword — Find a Trainer",
+            "description": "Locate an LGBTQ+-friendly instructor near you. 1,500+ vetted trainers who will meet you where you are, no experience required.",
+            "url": "https://blazingsword.org/find-a-trainer/"
+          }
+        },
+        "res_uscca_free": {
+          "type": "resource",
+          "settings": {
+            "name": "USCCA Free Resource Library",
+            "description": "Free articles, videos, and guides on gun safety, storage, and fundamentals. No membership required to start learning.",
+            "url": "https://www.usconcealedcarry.com/resources/"
+          }
+        },
+        "res_four_rules": {
+          "type": "resource",
+          "settings": {
+            "name": "Project ChildSafe — Safe Storage Hub",
+            "description": "Free gun locks, storage guidelines, and a safe storage locator. Responsible ownership starts with keeping your firearm secure.",
+            "url": "https://projectchildsafe.org/safe-storage/"
+          }
+        },
         "cat_lgbtq": {
           "type": "category",
           "settings": {
@@ -414,6 +453,11 @@
         }
       },
       "block_order": [
+        "cat_first_principles",
+        "res_cornered_cat",
+        "res_obs_trainer",
+        "res_uscca_free",
+        "res_four_rules",
         "cat_lgbtq",
         "res_pink_pistols",
         "res_blazing_sword",

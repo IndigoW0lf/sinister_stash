@@ -1,4 +1,5 @@
 <div class="sg-resources color-{{ section.settings.color_scheme }}">
+
   <!-- Hero -->
   <div class="sg-resources__hero">
     <div class="page-width">
@@ -8,18 +9,41 @@
     </div>
   </div>
 
-  <!-- Resource Categories -->
+  <!-- Category Jump Nav -->
+  <nav class="sg-resources__nav" aria-label="Jump to section">
+    <div class="page-width">
+      <div class="sg-resources__nav-inner">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'category' -%}
+            <a href="#sg-cat-{{ forloop.index }}" class="sg-resources__nav-link">
+              {{- block.settings.heading -}}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </nav>
+
+  <!-- Accordion Categories -->
   <div class="sg-resources__body page-width">
+    {%- assign needs_close = false -%}
     {%- for block in section.blocks -%}
       {%- case block.type -%}
 
         {%- when 'category' -%}
-          <div class="sg-resources__category" id="sg-cat-{{ forloop.index }}" {{ block.shopify_attributes }}>
-            <div class="sg-resources__category-header">
-              <h2 class="sg-resources__category-title">{{ block.settings.heading }}</h2>
-              <p class="sg-resources__category-desc">{{ block.settings.description }}</p>
-            </div>
-          </div>
+          {%- if needs_close -%}
+            </div></details>
+          {%- endif -%}
+          {%- assign needs_close = true -%}
+          <details class="sg-resources__accordion" id="sg-cat-{{ forloop.index }}" open {{ block.shopify_attributes }}>
+            <summary class="sg-resources__accordion-trigger">
+              <div class="sg-resources__accordion-header">
+                <h2 class="sg-resources__category-title">{{ block.settings.heading }}</h2>
+                <p class="sg-resources__category-desc">{{ block.settings.description }}</p>
+              </div>
+              <span class="sg-resources__accordion-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="sg-resources__accordion-body">
 
         {%- when 'resource' -%}
           <a href="{{ block.settings.url }}" target="_blank" rel="noopener noreferrer" class="sg-resources__card" {{ block.shopify_attributes }}>
@@ -27,11 +51,14 @@
               <h3 class="sg-resources__card-name">{{ block.settings.name }}</h3>
               <p class="sg-resources__card-desc">{{ block.settings.description }}</p>
             </div>
-            <span class="sg-resources__card-arrow">&rarr;</span>
+            <span class="sg-resources__card-arrow" aria-hidden="true">&rarr;</span>
           </a>
 
       {%- endcase -%}
     {%- endfor -%}
+    {%- if needs_close -%}
+      </div></details>
+    {%- endif -%}
 
     <!-- CTA -->
     <div class="sg-resources__cta">
@@ -51,10 +78,17 @@
     color: rgb(var(--color-foreground));
   }
 
+  /* Hero */
   .sg-resources__hero {
     padding: 6rem 2.4rem 4rem;
     text-align: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  @media screen and (min-width: 750px) {
+    .sg-resources__hero {
+      padding: 10rem 2.4rem 6rem;
+    }
   }
 
   .sg-resources__eyebrow {
@@ -77,12 +111,7 @@
   }
 
   @media screen and (min-width: 750px) {
-    .sg-resources__hero {
-      padding: 10rem 2.4rem 6rem;
-    }
-    .sg-resources__title {
-      font-size: 7.2rem;
-    }
+    .sg-resources__title { font-size: 7.2rem; }
   }
 
   .sg-resources__intro {
@@ -95,26 +124,82 @@
   }
 
   @media screen and (min-width: 750px) {
-    .sg-resources__intro {
-      font-size: 1.8rem;
-    }
+    .sg-resources__intro { font-size: 1.8rem; }
   }
 
-  /* Body / Cards */
+  /* Jump Nav */
+  .sg-resources__nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: rgb(var(--color-background));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.4rem 0;
+  }
+
+  .sg-resources__nav-inner {
+    display: flex;
+    gap: 0.8rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 2.4rem;
+  }
+
+  .sg-resources__nav-inner::-webkit-scrollbar { display: none; }
+
+  .sg-resources__nav-link {
+    flex-shrink: 0;
+    padding: 0.5rem 1.4rem;
+    font-family: var(--font-body-family);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 2rem;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .sg-resources__nav-link:hover {
+    border-color: rgb(var(--color-coral));
+    color: rgb(var(--color-coral));
+  }
+
+  /* Body */
   .sg-resources__body {
-    padding-top: 2rem;
+    padding-top: 0;
     padding-bottom: 8rem;
   }
 
-  /* Category headers */
-  .sg-resources__category {
-    padding-top: 5.6rem;
-    margin-bottom: 2.4rem;
+  /* Accordion */
+  .sg-resources__accordion {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .sg-resources__category:first-child {
+  .sg-resources__accordion:first-of-type {
     border-top: none;
+  }
+
+  .sg-resources__accordion-trigger {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 4rem 0 2rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .sg-resources__accordion-trigger::-webkit-details-marker { display: none; }
+  .sg-resources__accordion-trigger::marker { content: none; }
+
+  .sg-resources__accordion-header {
+    flex: 1;
+    min-width: 0;
   }
 
   .sg-resources__category-title {
@@ -123,12 +208,11 @@
     text-transform: uppercase;
     color: rgb(var(--color-ice-white));
     margin-bottom: 0.8rem;
+    line-height: 1.1;
   }
 
   @media screen and (min-width: 750px) {
-    .sg-resources__category-title {
-      font-size: 3.6rem;
-    }
+    .sg-resources__category-title { font-size: 3.6rem; }
   }
 
   .sg-resources__category-desc {
@@ -137,9 +221,44 @@
     color: rgba(255, 255, 255, 0.5);
     line-height: 1.6;
     max-width: 56rem;
+    margin: 0;
   }
 
-  /* Resource cards */
+  .sg-resources__accordion-icon {
+    flex-shrink: 0;
+    width: 2.8rem;
+    height: 2.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.4);
+    transition: border-color 0.2s ease, color 0.2s ease;
+    margin-top: 1rem;
+    line-height: 1;
+  }
+
+  .sg-resources__accordion-icon::before {
+    content: '+';
+  }
+
+  details[open] .sg-resources__accordion-icon::before {
+    content: '\2212';
+  }
+
+  details[open] .sg-resources__accordion-icon {
+    border-color: rgb(var(--color-coral));
+    color: rgb(var(--color-coral));
+  }
+
+  .sg-resources__accordion-body {
+    padding-bottom: 4rem;
+  }
+
+  /* Resource Cards */
   .sg-resources__card {
     display: flex;
     align-items: center;
@@ -303,25 +422,9 @@
   ],
   "presets": [
     {
-      "name": "Resources Page",
-      "blocks": [
-        {
-          "type": "category",
-          "settings": {
-            "heading": "Inclusive Gun Clubs & Communities",
-            "description": "Spaces built for the rest of us."
-          }
-        },
-        {
-          "type": "resource",
-          "settings": {
-            "name": "Pink Pistols",
-            "description": "LGBTQ+ gun rights organization with 45+ chapters nationwide. \"Armed queers don't get bashed.\""
-          }
-        }
-      ]
+      "name": "Resources Page"
     }
   ],
-  "max_blocks": 80
+  "max_blocks": 120
 }
 {% endschema %}
