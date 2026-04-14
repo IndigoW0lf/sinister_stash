@@ -674,6 +674,74 @@ cart-remove-button a:hover {
   color: #eef4f0;
 }
 
+/* --- Manifesto epigraph --- */
+.why-epigraph {
+  margin: 40px 0 56px;
+  padding: 24px 32px;
+  border-left: 3px solid #F0645A;
+}
+
+.why-epigraph__quote {
+  font-family: var(--font-body-family), 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  line-height: 1.4;
+  color: #eef4f0;
+  font-style: italic;
+  font-weight: 300;
+  margin: 0 0 10px;
+  quotes: none;
+  border: none;
+  padding: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .why-epigraph__quote { font-size: 26px; }
+}
+
+.why-epigraph__attr {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: rgba(238, 244, 240, 0.45);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* --- Pull quote block --- */
+.why-pullquote {
+  margin: 8px 0 56px;
+  padding: 48px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.why-pullquote p {
+  font-family: var(--font-heading-family), 'PS Tier Condensed', sans-serif;
+  font-size: 36px !important;
+  line-height: 1.2 !important;
+  color: #F0645A !important;
+  font-weight: 400;
+  margin: 0 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+@media screen and (min-width: 750px) {
+  .why-pullquote p { font-size: 52px !important; }
+}
+
+/* --- Section numbers --- */
+.why-section-num {
+  display: inline;
+  font-family: var(--font-body-family), 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: #F0645A;
+  margin-right: 10px;
+  vertical-align: middle;
+  opacity: 0.8;
+}
+
 /* Dawn page template overrides for /why */
 .sg-why-section .page-width {
   max-width: none;
