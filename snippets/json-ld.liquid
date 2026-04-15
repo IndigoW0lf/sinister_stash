@@ -1,0 +1,111 @@
+{% comment %}
+  Sinister Stash — JSON-LD Structured Data
+  Outputs Organization schema on every page and Product schema on product pages.
+{% endcomment %}
+
+{%- if request.page_type == 'product' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": {{ product.title | json }},
+      "url": "{{ shop.url }}{{ product.url }}",
+      "description": {{ product.description | strip_html | truncate: 5000 | json }},
+      {%- if product.featured_image -%}
+        "image": "https:{{ product.featured_image | image_url: width: 1200 }}",
+      {%- endif -%}
+      "brand": {
+        "@type": "Brand",
+        "name": {{ product.vendor | json }}
+      },
+      "sku": {{ product.selected_or_first_available_variant.sku | json }},
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "{{ cart.currency.iso_code }}",
+        "lowPrice": {{ product.price_min | money_without_currency | strip_html | json }},
+        "highPrice": {{ product.price_max | money_without_currency | strip_html | json }},
+        "offerCount": {{ product.variants.size }},
+        "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+        "url": "{{ shop.url }}{{ product.url }}"
+      }
+    }
+  </script>
+{%- endif -%}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    "url": "{{ shop.url }}",
+    {%- if settings.favicon -%}
+      "logo": "https:{{ settings.favicon | image_url: width: 512 }}",
+    {%- endif -%}
+    "sameAs": [
+      {%- if settings.social_twitter_link != blank -%}"{{ settings.social_twitter_link }}"{%- endif -%}
+      {%- if settings.social_facebook_link != blank -%}{% if settings.social_twitter_link != blank %},{% endif %}"{{ settings.social_facebook_link }}"{%- endif -%}
+      {%- if settings.social_instagram_link != blank -%}{% if settings.social_twitter_link != blank or settings.social_facebook_link != blank %},{% endif %}"{{ settings.social_instagram_link }}"{%- endif -%}
+      {%- if settings.social_tiktok_link != blank -%}{% if settings.social_twitter_link != blank or settings.social_facebook_link != blank or settings.social_instagram_link != blank %},{% endif %}"{{ settings.social_tiktok_link }}"{%- endif -%}
+      {%- if settings.social_youtube_link != blank -%}{% if settings.social_twitter_link != blank or settings.social_facebook_link != blank or settings.social_instagram_link != blank or settings.social_tiktok_link != blank %},{% endif %}"{{ settings.social_youtube_link }}"{%- endif -%}
+    ]
+  }
+</script>
+
+{%- if request.page_type == 'collection' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": {{ shop.name | json }},
+          "item": "{{ shop.url }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ collection.title | json }},
+          "item": "{{ shop.url }}{{ collection.url }}"
+        }
+      ]
+    }
+  </script>
+{%- elsif request.page_type == 'product' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": {{ shop.name | json }},
+          "item": "{{ shop.url }}"
+        }
+        {%- if product.collections.size > 0 -%}
+          ,{
+            "@type": "ListItem",
+            "position": 2,
+            "name": {{ product.collections.first.title | json }},
+            "item": "{{ shop.url }}{{ product.collections.first.url }}"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": {{ product.title | json }},
+            "item": "{{ shop.url }}{{ product.url }}"
+          }
+        {%- else -%}
+          ,{
+            "@type": "ListItem",
+            "position": 2,
+            "name": {{ product.title | json }},
+            "item": "{{ shop.url }}{{ product.url }}"
+          }
+        {%- endif -%}
+      ]
+    }
+  </script>
+{%- endif -%}

@@ -14,45 +14,37 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "footer-order": {
-          "type": "text",
+        "footer-1": {
+          "type": "link_list",
           "settings": {
-            "heading": "YOUR ORDER",
-            "subtext": "<p><a href=\"\/pages\/faq\">FAQ<\/a><\/p><p><a href=\"\/pages\/shipping\">Shipping Info<\/a><\/p><p><a href=\"\/pages\/contact\">Contact Us<\/a><\/p>"
+            "heading": "Info",
+            "menu": "footer"
           }
         },
-        "footer-mission": {
-          "type": "brand_information",
-          "settings": {
-            "show_social": true
-          }
-        },
-        "footer-culture": {
+        "footer-2": {
           "type": "text",
           "settings": {
-            "heading": "THE CULTURE",
-            "subtext": "<p><a href=\"\/pages\/why\">The Manifesto<\/a><\/p><p><a href=\"\/pages\/resources\">Resources<\/a><\/p><p><a href=\"\/blogs\/field-notes\">Field Notes<\/a><\/p><p><a href=\"\/collections\/all\">The Stash<\/a><\/p>"
+            "heading": "Our Mission",
+            "subtext": "<p>Gun culture got built without us. So we built our own. Sinister Stash is for leftists, liberals, LGBTQ+ folks, women, BIPOC, disabled shooters, first-timers — everyone mainstream gun culture left out.<\/p>"
           }
         }
       },
       "block_order": [
-        "footer-order",
-        "footer-mission",
-        "footer-culture"
+        "footer-1",
+        "footer-2"
       ],
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
-        "newsletter_heading": "Join the culture.",
-        "show_social": false,
-        "enable_follow_on_shop": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "show_social": true,
         "enable_country_selector": false,
         "enable_language_selector": false,
         "payment_enable": true,
-        "show_policy": true,
+        "show_policy": false,
         "margin_top": 48,
-        "padding_top": 56,
-        "padding_bottom": 56
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
