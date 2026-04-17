@@ -882,8 +882,8 @@ body .sg-why-section .breadcrumbs__list {
   }
 }
 
-/* Tighten dead space between heading and form */
-.contact .page-width {
+/* Tighten dead space — .contact and .page-width are the same element */
+.contact.page-width {
   padding-top: 10px !important;
 }
 
@@ -941,6 +941,34 @@ body .sg-why-section .breadcrumbs__list {
 .contact__fields textarea::placeholder,
 .contact textarea::placeholder {
   color: rgba(240, 237, 234, 0.45) !important;
+}
+
+/* Topic field container — replaces Dawn .field to avoid absolute-label conflict */
+.sinister-topic-field {
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .sinister-topic-field {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Static label above the select (not Dawn's floating absolute label) */
+.sinister-label {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #F0EDEA;
+  margin-bottom: 0.8rem;
+}
+
+.sinister-label [aria-hidden="true"] {
+  color: #F0645A;
+  margin-left: 2px;
 }
 
 /* Select dropdown wrapper */
