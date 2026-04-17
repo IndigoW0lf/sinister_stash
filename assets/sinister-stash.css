@@ -871,7 +871,7 @@ body .sg-why-section .breadcrumbs__list {
   color: #F0EDEA !important;
   text-transform: uppercase !important;
   letter-spacing: 0.02em !important;
-  margin-bottom: 24px !important;
+  margin-bottom: 8px !important;
   line-height: 1 !important;
 }
 
@@ -947,6 +947,7 @@ body .sg-why-section .breadcrumbs__list {
 .sinister-select-wrapper {
   position: relative;
   display: block;
+  width: 100%;
 }
 
 /* Select element */
