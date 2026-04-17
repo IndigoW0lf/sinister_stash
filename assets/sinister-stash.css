@@ -884,7 +884,7 @@ body .sg-why-section .breadcrumbs__list {
 
 /* Tighten dead space between heading and form */
 .contact .page-width {
-  padding-top: 20px !important;
+  padding-top: 10px !important;
 }
 
 /* Labels */
@@ -955,8 +955,8 @@ body .sg-why-section .breadcrumbs__list {
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
-  padding: 1.5rem 48px 1.5rem 1.5rem !important;
-  min-height: 5rem;
+  padding: 1.8rem 48px 1.8rem 1.5rem !important;
+  min-height: 6.5rem;
   background: transparent !important;
   border: 1px solid rgba(240, 237, 234, 0.35) !important;
   border-radius: 0 !important;
