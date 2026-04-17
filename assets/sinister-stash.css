@@ -859,3 +859,158 @@ body .sg-why-section .breadcrumbs__list {
   color: #eef4f0;
   text-decoration: none;
 }
+
+/* ============================================
+   CONTACT FORM — Sinister Stash overrides
+   ============================================ */
+
+/* Page heading */
+.contact__title,
+.page-title {
+  font-family: 'Martin', sans-serif !important;
+  font-size: 64px !important;
+  color: #F0EDEA !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+  margin-bottom: 48px !important;
+  line-height: 1 !important;
+}
+
+@media (max-width: 749px) {
+  .contact__title,
+  .page-title {
+    font-size: 42px !important;
+    margin-bottom: 32px !important;
+  }
+}
+
+/* Tighten the dead space under heading */
+.contact .page-width {
+  padding-top: 48px !important;
+}
+
+/* Labels */
+.contact-form .field__label,
+.contact__fields .field__label,
+.contact .field__label {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: #F0EDEA !important;
+}
+
+/* Required asterisk */
+.contact-form .field__label [aria-hidden="true"],
+.contact__fields .field__label [aria-hidden="true"],
+.contact .field__label [aria-hidden="true"] {
+  color: #F0645A !important;
+  margin-left: 2px;
+}
+
+/* All inputs and textarea */
+.contact-form .field__input,
+.contact__fields .field__input,
+.contact .field__input,
+.contact-form textarea,
+.contact__fields textarea,
+.contact textarea {
+  font-family: 'Space Grotesk', sans-serif !important;
+  background: transparent !important;
+  border: 1px solid rgba(240, 237, 234, 0.35) !important;
+  border-radius: 0 !important;
+  color: #F0EDEA !important;
+  transition: border-color 0.15s ease;
+}
+
+.contact-form .field__input:focus,
+.contact__fields .field__input:focus,
+.contact .field__input:focus,
+.contact-form textarea:focus,
+.contact__fields textarea:focus,
+.contact textarea:focus {
+  border-color: #F0645A !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Placeholder text */
+.contact-form .field__input::placeholder,
+.contact__fields .field__input::placeholder,
+.contact .field__input::placeholder,
+.contact-form textarea::placeholder,
+.contact__fields textarea::placeholder,
+.contact textarea::placeholder {
+  color: rgba(240, 237, 234, 0.45) !important;
+}
+
+/* Select dropdown wrapper */
+.sinister-select-wrapper {
+  position: relative;
+  display: block;
+}
+
+/* Select element */
+.sinister-select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 48px !important;
+  background: transparent !important;
+  border: 1px solid rgba(240, 237, 234, 0.35) !important;
+  border-radius: 0 !important;
+  color: #F0EDEA !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+
+.sinister-select:focus {
+  border-color: #F0645A !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.sinister-select:invalid,
+.sinister-select option[value=""] {
+  color: rgba(240, 237, 234, 0.45) !important;
+}
+
+.sinister-select option {
+  background: #141E24 !important;
+  color: #F0EDEA !important;
+}
+
+/* Custom arrow */
+.sinister-select-arrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #F0645A;
+  font-size: 16px;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* Submit button */
+.contact .button,
+.contact .contact__button .button {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  background: #F0645A !important;
+  color: #ffffff !important;
+  border: 2px solid #F0645A !important;
+  border-radius: 0 !important;
+  min-width: 200px !important;
+  padding: 14px 32px !important;
+  transition: background 0.15s ease, color 0.15s ease !important;
+}
+
+.contact .button:hover,
+.contact .contact__button .button:hover {
+  background: transparent !important;
+  color: #F0645A !important;
+}
