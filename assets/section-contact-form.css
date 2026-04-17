@@ -6,6 +6,12 @@
   align-items: flex-start;
 }
 
+.contact h2.form-status.form__message {
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
 .contact .icon-success {
   margin-top: 0.2rem;
 }
