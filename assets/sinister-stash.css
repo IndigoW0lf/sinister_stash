@@ -916,7 +916,7 @@ body .sg-why-section .breadcrumbs__list {
 .contact textarea {
   font-family: 'Space Grotesk', sans-serif !important;
   background: transparent !important;
-  border: 1px solid rgba(240, 237, 234, 0.35) !important;
+  border: 1px solid rgba(240, 237, 234, 0.55) !important;
   border-radius: 0 !important;
   color: #F0EDEA !important;
   transition: border-color 0.15s ease;
@@ -987,10 +987,14 @@ body .sg-why-section .breadcrumbs__list {
   padding: 1.8rem 48px 1.8rem 1.5rem !important;
   min-height: 6.5rem;
   background: transparent !important;
-  border: 1px solid rgba(240, 237, 234, 0.35) !important;
+  border: 1px solid rgba(240, 237, 234, 0.55) !important;
   border-radius: 0 !important;
   color: #F0EDEA !important;
   font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
 }
 
 .sinister-select:focus {
