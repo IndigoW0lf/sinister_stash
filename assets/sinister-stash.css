@@ -598,7 +598,7 @@ a:not(.button):hover {
 }
 
 /* ============================================
-   FOOTER — ALLRIOT-inspired spread layout
+   FOOTER — ALLRIOT-inspired 3-column layout
    ============================================ */
 
 .footer {
@@ -606,22 +606,72 @@ a:not(.button):hover {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* More generous top padding */
-.footer__content-top.page-width {
-  padding-top: 7rem;
-  padding-bottom: 5rem;
-}
+/* ── 3-column grid on desktop ─────────────────
+   .footer__blocks-wrapper becomes display:contents
+   so its two child blocks participate directly in
+   the parent grid alongside .footer-block--newsletter
+   ─────────────────────────────────────────────── */
+@media screen and (min-width: 990px) {
+  .footer__content-top.page-width {
+    display: grid !important;
+    grid-template-columns: 1fr 1.6fr 1fr !important;
+    grid-template-areas: "left center right" !important;
+    column-gap: 5rem !important;
+    align-items: start !important;
+    padding-top: 7rem !important;
+    padding-bottom: 6rem !important;
+  }
 
-/* Widen the column gap between blocks */
-@media screen and (min-width: 750px) {
   .footer__blocks-wrapper {
-    grid-template-columns: 1fr 2fr !important;
-    column-gap: 8rem !important;
-    margin-bottom: 5rem;
+    display: contents !important;
+  }
+
+  /* First block → left column */
+  .footer__blocks-wrapper > .footer-block:first-child {
+    grid-area: left !important;
+  }
+
+  /* Second block → right column */
+  .footer__blocks-wrapper > .footer-block:last-child {
+    grid-area: right !important;
+  }
+
+  /* Newsletter/social → center column */
+  .footer-block--newsletter {
+    grid-area: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    border-top: none !important;
+    padding-top: 0 !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+
+  .footer__newsletter {
+    width: 100%;
+    max-width: 32rem;
   }
 }
 
-/* Block headings — bold, uppercase, display font */
+/* Mobile: stack vertically */
+@media screen and (max-width: 989px) {
+  .footer__content-top.page-width {
+    padding-top: 5rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  .footer-block--newsletter {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-top: 3rem !important;
+    margin-top: 1rem !important;
+  }
+}
+
+/* ── Block headings ────────────────────────── */
 .footer-block__heading {
   font-family: var(--font-heading-family) !important;
   font-size: 2rem !important;
@@ -629,12 +679,13 @@ a:not(.button):hover {
   color: #F0EDEA !important;
   text-transform: uppercase !important;
   letter-spacing: 0.04em !important;
-  margin-bottom: 2.4rem !important;
+  margin-bottom: 2.8rem !important;
   padding-bottom: 1.2rem !important;
   border-bottom: 1px solid rgba(240, 237, 234, 0.12) !important;
+  width: 100%;
 }
 
-/* Footer nav links — spaced out, coral on hover */
+/* ── Nav links ─────────────────────────────── */
 .footer-block__details-content.list-unstyled li {
   margin-bottom: 1.4rem;
 }
@@ -642,49 +693,31 @@ a:not(.button):hover {
 .footer-block__details-content.list-unstyled a {
   font-family: var(--font-body-family);
   font-size: 1.5rem !important;
-  color: rgba(240, 237, 234, 0.65) !important;
+  color: rgba(240, 237, 234, 0.6) !important;
   text-decoration: none !important;
   transition: color 0.15s ease;
 }
 
 .footer-block__details-content.list-unstyled a:hover {
   color: #F0645A !important;
-  text-decoration: none !important;
 }
 
-/* Mission / text block body copy */
+/* ── Mission / text block body ─────────────── */
 .footer-block__details-content.rte {
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   line-height: 1.75;
-  color: rgba(240, 237, 234, 0.65);
+  color: rgba(240, 237, 234, 0.6);
 }
 
-/* Newsletter row — full-width horizontal strip with separator */
-.footer-block--newsletter {
-  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-  padding-top: 3.2rem !important;
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  flex-wrap: wrap !important;
-  gap: 2.4rem !important;
-}
-
-.footer__newsletter {
-  flex: 1;
-  max-width: 38rem;
-}
-
-/* Newsletter heading */
-.footer__newsletter .footer-block__heading {
+/* ── Newsletter in center ──────────────────── */
+.footer-block--newsletter .footer-block__heading {
   border-bottom: none !important;
   padding-bottom: 0 !important;
+  font-size: 1.3rem !important;
+  letter-spacing: 0.1em !important;
   margin-bottom: 1.2rem !important;
-  font-size: 1.4rem !important;
 }
 
-/* Email signup input */
 .footer .field__input {
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -692,15 +725,17 @@ a:not(.button):hover {
   border-radius: 0;
 }
 
-/* Social icons row */
+/* Social icons */
 .footer__list-social {
   display: flex;
   gap: 2rem;
   align-items: center;
+  justify-content: center;
+  margin-top: 2.4rem;
 }
 
 .footer__list-social a {
-  color: rgba(240, 237, 234, 0.55) !important;
+  color: rgba(240, 237, 234, 0.5) !important;
   transition: color 0.15s ease;
 }
 
@@ -708,33 +743,41 @@ a:not(.button):hover {
   color: #F0645A !important;
 }
 
-/* Bottom bar */
+/* Follow on shop button */
+.footer__follow-on-shop {
+  margin-top: 2rem;
+}
+
+/* ── Bottom bar ─────────────────────────────── */
 .footer__content-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 2.4rem !important;
-  padding-bottom: 2.4rem !important;
+  background-color: #0A1218;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .footer__content-bottom-wrapper {
-  padding-top: 0 !important;
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
 }
 
 .footer__copyright {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.4rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .footer__copyright .copyright__content,
 .footer__copyright .copyright__content a {
   font-size: 1.2rem !important;
-  color: rgba(240, 237, 234, 0.4) !important;
+  color: rgba(240, 237, 234, 0.35) !important;
   text-decoration: none;
 }
 
 .footer__copyright .copyright__content a:hover {
-  color: rgba(240, 237, 234, 0.75) !important;
+  color: rgba(240, 237, 234, 0.7) !important;
 }
 
 .footer .policies {
@@ -744,6 +787,19 @@ a:not(.button):hover {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+/* Hide "Powered by Shopify" */
+.footer .powered-by-link,
+.footer [href*="shopify.com"] {
+  display: none;
+}
+
+/* Payment icons row */
+.footer__payment {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.2rem;
 }
 
 /* ============================================
