@@ -611,12 +611,19 @@ a:not(.button):hover {
    so its two child blocks participate directly in
    the parent grid alongside .footer-block--newsletter
    ─────────────────────────────────────────────── */
+/* Widen footer beyond Dawn's default page-width */
+.footer .page-width {
+  max-width: 1440px !important;
+  padding-left: 6rem !important;
+  padding-right: 6rem !important;
+}
+
 @media screen and (min-width: 990px) {
   .footer__content-top.page-width {
     display: grid !important;
-    grid-template-columns: 1fr 1.6fr 1fr !important;
+    grid-template-columns: minmax(220px, 1fr) minmax(300px, 1.4fr) minmax(220px, 1fr) !important;
     grid-template-areas: "left center right" !important;
-    column-gap: 5rem !important;
+    column-gap: 6rem !important;
     align-items: start !important;
     padding-top: 7rem !important;
     padding-bottom: 6rem !important;
@@ -629,11 +636,13 @@ a:not(.button):hover {
   /* First block → left column */
   .footer__blocks-wrapper > .footer-block:first-child {
     grid-area: left !important;
+    min-width: 0;
   }
 
   /* Second block → right column */
   .footer__blocks-wrapper > .footer-block:last-child {
     grid-area: right !important;
+    min-width: 0;
   }
 
   /* Newsletter/social → center column */
