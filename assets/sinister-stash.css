@@ -598,7 +598,7 @@ a:not(.button):hover {
 }
 
 /* ============================================
-   FOOTER
+   FOOTER — ALLRIOT-inspired spread layout
    ============================================ */
 
 .footer {
@@ -606,27 +606,144 @@ a:not(.button):hover {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.footer__content-bottom {
-  font-size: 1.2rem;
-  opacity: 0.65;
+/* More generous top padding */
+.footer__content-top.page-width {
+  padding-top: 7rem;
+  padding-bottom: 5rem;
 }
 
-/* Email signup label */
-.footer .newsletter-form__field-label {
+/* Widen the column gap between blocks */
+@media screen and (min-width: 750px) {
+  .footer__blocks-wrapper {
+    grid-template-columns: 1fr 2fr !important;
+    column-gap: 8rem !important;
+    margin-bottom: 5rem;
+  }
+}
+
+/* Block headings — bold, uppercase, display font */
+.footer-block__heading {
+  font-family: var(--font-heading-family) !important;
+  font-size: 2rem !important;
+  font-weight: 400 !important;
+  color: #F0EDEA !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  margin-bottom: 2.4rem !important;
+  padding-bottom: 1.2rem !important;
+  border-bottom: 1px solid rgba(240, 237, 234, 0.12) !important;
+}
+
+/* Footer nav links — spaced out, coral on hover */
+.footer-block__details-content.list-unstyled li {
+  margin-bottom: 1.4rem;
+}
+
+.footer-block__details-content.list-unstyled a {
   font-family: var(--font-body-family);
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: rgb(var(--color-mint));
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-size: 1.5rem !important;
+  color: rgba(240, 237, 234, 0.65) !important;
+  text-decoration: none !important;
+  transition: color 0.15s ease;
 }
 
-/* Email input */
+.footer-block__details-content.list-unstyled a:hover {
+  color: #F0645A !important;
+  text-decoration: none !important;
+}
+
+/* Mission / text block body copy */
+.footer-block__details-content.rte {
+  font-size: 1.6rem;
+  line-height: 1.75;
+  color: rgba(240, 237, 234, 0.65);
+}
+
+/* Newsletter row — full-width horizontal strip with separator */
+.footer-block--newsletter {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding-top: 3.2rem !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 2.4rem !important;
+}
+
+.footer__newsletter {
+  flex: 1;
+  max-width: 38rem;
+}
+
+/* Newsletter heading */
+.footer__newsletter .footer-block__heading {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 1.2rem !important;
+  font-size: 1.4rem !important;
+}
+
+/* Email signup input */
 .footer .field__input {
-  background-color: rgb(var(--color-slate));
+  background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  color: rgb(var(--color-ice-white));
+  color: #F0EDEA;
   border-radius: 0;
+}
+
+/* Social icons row */
+.footer__list-social {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.footer__list-social a {
+  color: rgba(240, 237, 234, 0.55) !important;
+  transition: color 0.15s ease;
+}
+
+.footer__list-social a:hover {
+  color: #F0645A !important;
+}
+
+/* Bottom bar */
+.footer__content-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 2.4rem !important;
+  padding-bottom: 2.4rem !important;
+}
+
+.footer__content-bottom-wrapper {
+  padding-top: 0 !important;
+}
+
+.footer__copyright {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer__copyright .copyright__content,
+.footer__copyright .copyright__content a {
+  font-size: 1.2rem !important;
+  color: rgba(240, 237, 234, 0.4) !important;
+  text-decoration: none;
+}
+
+.footer__copyright .copyright__content a:hover {
+  color: rgba(240, 237, 234, 0.75) !important;
+}
+
+.footer .policies {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* ============================================
