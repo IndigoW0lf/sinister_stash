@@ -618,65 +618,48 @@ a:not(.button):hover {
   padding-right: 6rem !important;
 }
 
-@media screen and (min-width: 990px) {
-  .footer__content-top.page-width {
-    display: grid !important;
-    grid-template-columns: minmax(220px, 1fr) minmax(300px, 1.4fr) minmax(220px, 1fr) !important;
-    grid-template-areas: "left center right" !important;
-    column-gap: 6rem !important;
-    align-items: start !important;
-    padding-top: 7rem !important;
-    padding-bottom: 6rem !important;
-  }
-
-  .footer__blocks-wrapper {
-    display: contents !important;
-  }
-
-  /* First block → left column */
-  .footer__blocks-wrapper > .footer-block:first-child {
-    grid-area: left !important;
-    min-width: 0;
-  }
-
-  /* Second block → right column */
-  .footer__blocks-wrapper > .footer-block:last-child {
-    grid-area: right !important;
-    min-width: 0;
-  }
-
-  /* Newsletter/social → center column */
-  .footer-block--newsletter {
-    grid-area: center !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    border-top: none !important;
-    padding-top: 0 !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
-    padding-left: 4rem !important;
-    padding-right: 4rem !important;
-  }
-
-  .footer__newsletter {
-    width: 100%;
-    max-width: 32rem;
-  }
+.footer__content-top.page-width {
+  padding-top: 7rem;
+  padding-bottom: 6rem;
 }
 
-/* Mobile: stack vertically */
+/* 3-column grid — bypasses Dawn's grid entirely */
+.sg-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 6rem;
+  align-items: start;
+  width: 100%;
+}
+
+/* Center column styling */
+.sg-footer-col--center {
+  text-align: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+/* Mobile: stack */
 @media screen and (max-width: 989px) {
-  .footer__content-top.page-width {
-    padding-top: 5rem !important;
-    padding-bottom: 4rem !important;
+  .sg-footer-grid {
+    grid-template-columns: 1fr;
+    row-gap: 4rem;
   }
 
-  .footer-block--newsletter {
-    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-    padding-top: 3rem !important;
-    margin-top: 1rem !important;
+  .sg-footer-col--center {
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 3rem 0;
+    text-align: left;
+  }
+
+  .footer__content-top.page-width {
+    padding-top: 5rem;
+    padding-bottom: 4rem;
   }
 }
 
