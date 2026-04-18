@@ -864,28 +864,6 @@ body .sg-why-section .breadcrumbs__list {
    CONTACT FORM — Sinister Stash overrides
    ============================================ */
 
-/* Page heading — matches site-wide header style */
-.contact h2.title {
-  font-family: var(--font-heading-family) !important;
-  font-size: 4.8rem !important;
-  color: #F0EDEA !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.02em !important;
-  margin-bottom: 8px !important;
-  line-height: 1 !important;
-}
-
-@media (max-width: 749px) {
-  .contact h2.title {
-    font-size: 3.2rem !important;
-    margin-bottom: 16px !important;
-  }
-}
-
-/* Tighten dead space — .contact and .page-width are the same element */
-.contact.page-width {
-  padding-top: 10px !important;
-}
 
 /* Labels */
 .contact-form .field__label,
