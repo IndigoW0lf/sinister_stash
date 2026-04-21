@@ -28,14 +28,17 @@
               id="sg-popup-email"
               placeholder="YOUR EMAIL"
               required
+              aria-required="true"
               class="sg-popup__input"
               aria-label="Email address"
+              aria-describedby="sg-popup-error"
               autocomplete="email"
             >
             <button type="submit" class="sg-popup__submit" id="sg-popup-btn">
               {{ section.settings.button_label }}
             </button>
           </div>
+          <p id="sg-popup-error" class="sg-popup__error" role="alert" style="display:none;"></p>
         </form>
       </div>
 
@@ -139,12 +142,24 @@
       var email = emailInput ? emailInput.value.trim() : '';
 
       /* Basic validation */
-      if (!email || email.indexOf('@') === -1) {
+      var errorEl = document.getElementById('sg-popup-error');
+      if (!email || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
         emailInput.style.borderColor = '#F0645A';
+        if (errorEl) {
+          errorEl.textContent = 'Please enter a valid email address.';
+          errorEl.style.display = 'block';
+        }
         return;
       }
 
-      /* Disable button */
+      /* Clear any prior error */
+      if (errorEl) {
+        errorEl.style.display = 'none';
+        errorEl.textContent = '';
+      }
+      emailInput.style.borderColor = '';
+
+      /* Disable button and show loading */
       var btn = document.getElementById('sg-popup-btn');
       if (btn) {
         btn.textContent = 'JOINING...';
@@ -166,12 +181,27 @@
         },
         body: body.toString()
       })
-      .then(function() {
+      .then(function(response) {
+        if (!response.ok && response.status !== 302) {
+          throw new Error('Signup failed');
+        }
         showSuccess();
       })
-      .catch(function() {
-        /* Even if fetch fails (CORS, redirect), the email was likely saved */
-        showSuccess();
+      .catch(function(err) {
+        /* Shopify contact forms often redirect (302) which fetch treats as an error.
+           If the request was made, the email was likely saved. */
+        if (err.message === 'Signup failed') {
+          if (errorEl) {
+            errorEl.textContent = 'Something went wrong. Please try again.';
+            errorEl.style.display = 'block';
+          }
+          if (btn) {
+            btn.textContent = '{{ section.settings.button_label }}';
+            btn.disabled = false;
+          }
+        } else {
+          showSuccess();
+        }
       });
 
       return false;
