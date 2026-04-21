@@ -1,0 +1,86 @@
+{% comment %}
+  SINISTER STASH — Custom Blog Article Template
+  File: sections/article.sinister.liquid
+  Paired with: assets/sinister-stash.css (blog section)
+  Drop this file in your theme's sections/ folder.
+  On each blog post, select "sinister" from the Theme template dropdown.
+{% endcomment %}
+
+<article class="ss-article" itemscope itemtype="http://schema.org/BlogPosting">
+
+  {%- assign blog_handle = article.blog.handle -%}
+
+  <!-- POST HEADER -->
+  <header class="ss-article__header">
+    <div class="ss-article__header-inner">
+      {%- if article.tags.size > 0 -%}
+        <div class="ss-article__category">
+          {{ article.tags | first | upcase }}
+        </div>
+      {%- endif -%}
+
+      <h1 class="ss-article__title" itemprop="headline">
+        {{ article.title }}
+      </h1>
+
+      <div class="ss-article__meta">
+        <span>Sinister Stash</span>
+        <span class="ss-article__meta-sep">·</span>
+        <span itemprop="author">{{ article.author }}</span>
+        <span class="ss-article__meta-sep">·</span>
+        <time itemprop="datePublished" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+          {{ article.published_at | date: '%B %d, %Y' }}
+        </time>
+      </div>
+    </div>
+  </header>
+
+  <!-- POST BODY -->
+  <div class="ss-article__body" itemprop="articleBody">
+    {{ article.content }}
+  </div>
+
+  <!-- POST FOOTER -->
+  <footer class="ss-article__footer">
+    <div class="ss-article__footer-inner">
+
+      {%- if article.tags.size > 0 -%}
+        <div class="ss-article__tags">
+          {%- for tag in article.tags -%}
+            <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="ss-article__tag">
+              {{- tag -}}
+            </a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      <div class="ss-article__cta">
+        <p>The stash is being built.<br>Start yours.</p>
+        <a href="/collections/all" class="ss-article__cta-btn">Shop the Drop →</a>
+      </div>
+
+      <!-- PREV / NEXT NAV -->
+      <nav class="ss-article__nav">
+        {%- if blog.previous_article -%}
+          <a href="{{ blog.previous_article }}" class="ss-article__nav-link ss-article__nav-link--prev">
+            ← Previous
+          </a>
+        {%- endif -%}
+        {%- if blog.next_article -%}
+          <a href="{{ blog.next_article }}" class="ss-article__nav-link ss-article__nav-link--next">
+            Next →
+          </a>
+        {%- endif -%}
+      </nav>
+
+    </div>
+  </footer>
+
+</article>
+
+{% schema %}
+{
+  "name": "Sinister Article",
+  "settings": []
+}
+{% endschema %}
