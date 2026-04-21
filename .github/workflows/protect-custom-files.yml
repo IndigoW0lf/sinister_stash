@@ -1,0 +1,71 @@
+name: Protect Custom Theme Files
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  protect-files:
+    runs-on: ubuntu-latest
+    # Don't loop if this action itself made the last commit
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check and restore protected files
+        id: restore
+        run: |
+          RESTORED=false
+
+          PROTECTED_FILES=(
+            "sections/blog-sinister.liquid"
+            "sections/article-sinister.liquid"
+            "sections/sinister-shop-by.liquid"
+            "templates/blog.sinister.json"
+            "templates/article.sinister.json"
+          )
+
+          for FILE in "${PROTECTED_FILES[@]}"; do
+            if [ ! -f "$FILE" ]; then
+              echo "Missing: $FILE — restoring from git history"
+              LAST_COMMIT=$(git log --all --format="%H" -- "$FILE" | head -1)
+              if [ -n "$LAST_COMMIT" ]; then
+                mkdir -p "$(dirname "$FILE")"
+                git show "$LAST_COMMIT:$FILE" > "$FILE"
+                git add "$FILE"
+                RESTORED=true
+                echo "Restored $FILE from commit $LAST_COMMIT"
+              else
+                echo "ERROR: $FILE not found in git history — add it manually"
+              fi
+            fi
+          done
+
+          echo "restored=$RESTORED" >> $GITHUB_OUTPUT
+
+      - name: Commit restored files
+        if: steps.restore.outputs.restored == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: restore protected custom theme files [auto-restore]"
+          git push
+
+      - name: Push restored files to Shopify
+        if: steps.restore.outputs.restored == 'true' && env.SHOPIFY_TOKEN != ''
+        env:
+          SHOPIFY_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+        run: |
+          npm install -g @shopify/cli@latest @shopify/theme@latest
+          shopify theme push \
+            --store sinisterstash.myshopify.com \
+            --theme 187716796738 \
+            --allow-live \
+            --no-color
