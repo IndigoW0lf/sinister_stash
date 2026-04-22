@@ -27,6 +27,7 @@ jobs:
             "sections/blog-sinister.liquid"
             "sections/article-sinister.liquid"
             "sections/sinister-shop-by.liquid"
+            "sections/sinister-resources.liquid"
             "templates/blog.sinister.json"
             "templates/article.sinister.json"
           )
