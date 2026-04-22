@@ -10,6 +10,25 @@
     margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
   }
 
+  .footer__crisis-line {
+    text-align: center;
+    padding: 12px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .footer__crisis-line small {
+    font-family: var(--font-body-family);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: rgba(240, 237, 234, 0.35);
+    line-height: 1.6;
+  }
+
+  .footer__crisis-line strong {
+    color: rgba(240, 237, 234, 0.55);
+    font-weight: 600;
+  }
+
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
@@ -215,6 +234,9 @@
       </div>
     </div>
     <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
+      <div class="footer__crisis-line">
+        <small>If you're in crisis: call or text <strong>988</strong> &nbsp;·&nbsp; Trevor Project: <strong>1-866-488-7386</strong> &nbsp;·&nbsp; Trans Lifeline: <strong>877-565-8860</strong></small>
+      </div>
       <div class="footer__copyright caption">
         <small class="copyright__content"
           >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
