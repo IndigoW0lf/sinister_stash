@@ -16,11 +16,9 @@
     {%- endunless -%}
 
     {%- comment -%} Sinister Stash custom fonts {%- endcomment -%}
-    {%- comment -%}theme-check-disable RemoteAsset{%- endcomment -%}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    {%- comment -%}theme-check-enable RemoteAsset{%- endcomment -%}
 
     <title>
       {{ page_title }}
@@ -82,7 +80,6 @@
         font-display: swap;
       }
 
-      {%- comment -%}theme-check-disable UndefinedObject{%- endcomment -%}
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
         {% if forloop.index == 1 -%}
@@ -122,7 +119,6 @@
         --payment-terms-background-color: rgb({{ scheme.settings.background.rgb }});
       }
       {% endfor %}
-      {%- comment -%}theme-check-enable UndefinedObject{%- endcomment -%}
 
       {{ scheme_classes | prepend: 'body' }} {
         color: rgba(var(--color-foreground), 0.75);

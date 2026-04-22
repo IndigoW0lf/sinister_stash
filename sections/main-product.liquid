@@ -588,12 +588,10 @@
                                 {% endif %}
                               >
                                 <ul class="list-unstyled" role="list">
-                                  {%- comment -%}theme-check-disable UndefinedObject{%- endcomment -%}
                                   {%- for product in recommendations.products
                                     limit: block.settings.products_per_page
                                     offset: continue
                                   -%}
-                                  {%- comment -%}theme-check-enable UndefinedObject{%- endcomment -%}
                                     <li>
                                       {%- if block.settings.enable_quick_add -%}
                                         {% assign quick_add = 'standard' %}
@@ -733,13 +731,11 @@
     {%- endif -%}
 
     {%- liquid
-      # theme-check-disable UnusedAssign
       if product.selected_or_first_available_variant.featured_media
         assign seo_media = product.selected_or_first_available_variant.featured_media
       else
         assign seo_media = product.featured_media
       endif
-      # theme-check-enable UnusedAssign
     -%}
 
     <script type="application/ld+json">

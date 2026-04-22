@@ -25,21 +25,6 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-
-  .footer__crisis-line {
-    width: 100%;
-    text-align: center;
-    margin-top: 0.8rem;
-    padding-top: 0.8rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
-  .footer__crisis-line small {
-    font-family: var(--font-body-family);
-    font-size: 1.1rem;
-    color: rgba(var(--color-foreground), 0.35);
-    letter-spacing: 0.02em;
-  }
 {%- endstyle -%}
 
 <footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
@@ -248,9 +233,6 @@
             {%- endfor -%}
           </ul>
         {%- endif -%}
-      </div>
-      <div class="footer__crisis-line">
-        <small>If you're in crisis: call or text 988 &middot; Trevor Project: 1-866-488-7386 &middot; Trans Lifeline: 877-565-8860</small>
       </div>
     </div>
   </div>
