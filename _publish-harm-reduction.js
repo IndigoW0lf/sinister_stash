@@ -1,33 +1,84 @@
-#!/usr/bin/env python3
-"""
-One-shot script: creates the "The Part Nobody Talks About at the Gun Store"
-blog post in Field Notes on sinister-goods-2.myshopify.com.
+/**
+ * Publishes "The Part Nobody Talks About at the Gun Store" to Field Notes
+ * as a hidden draft — same pattern as publish-field-notes-3.js.
+ *
+ * Run (same pattern as other publish-field-notes scripts):
+ *   SHOPIFY_CLIENT_ID=<client_id> \
+ *   SHOPIFY_CLIENT_SECRET=<client_secret> \
+ *   node _publish-harm-reduction.js
+ *
+ * Delete this file after use.
+ */
 
-Run from anywhere:
-    python3 _push-blog-post.py
+const https = require('https');
 
-Delete this file after use — the token is passed via env var or hardcoded below.
-"""
+const SHOP = 'sinisterstash.myshopify.com';
+const CLIENT_ID = process.env.SHOPIFY_CLIENT_ID;
+const CLIENT_SECRET = process.env.SHOPIFY_CLIENT_SECRET;
 
-import json
-import urllib.request
-import urllib.error
-import os
-import sys
-
-SHOP = "sinister-goods-2.myshopify.com"
-TOKEN = os.environ.get("SHOPIFY_TOKEN", "")
-if not TOKEN:
-    print("Set SHOPIFY_TOKEN env var before running.")
-    print("  export SHOPIFY_TOKEN=shpat_...")
-    sys.exit(1)
-API = f"https://{SHOP}/admin/api/2024-01"
-HEADERS = {
-    "X-Shopify-Access-Token": TOKEN,
-    "Content-Type": "application/json",
+if (!CLIENT_ID || !CLIENT_SECRET) {
+  console.error('Set SHOPIFY_CLIENT_ID and SHOPIFY_CLIENT_SECRET before running.');
+  process.exit(1);
 }
 
-BODY_HTML = """
+function request(options, body) {
+  return new Promise((resolve, reject) => {
+    const req = https.request(options, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try { resolve({ status: res.statusCode, body: JSON.parse(data) }); }
+        catch (e) { reject(new Error(`Bad JSON: ${data}`)); }
+      });
+    });
+    req.on('error', reject);
+    if (body) req.write(body);
+    req.end();
+  });
+}
+
+async function getAccessToken() {
+  const body = JSON.stringify({
+    grant_type: 'client_credentials',
+    client_id: CLIENT_ID,
+    client_secret: CLIENT_SECRET,
+  });
+  const res = await request({
+    hostname: SHOP,
+    path: '/admin/oauth/access_token',
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body) },
+  }, body);
+  if (!res.body.access_token) throw new Error(`Auth failed: ${JSON.stringify(res.body)}`);
+  return res.body.access_token;
+}
+
+async function getBlogs(token) {
+  const res = await request({
+    hostname: SHOP,
+    path: '/admin/api/2025-01/blogs.json',
+    method: 'GET',
+    headers: { 'X-Shopify-Access-Token': token, 'Content-Type': 'application/json' },
+  });
+  return res.body.blogs;
+}
+
+async function createArticle(token, blogId, article) {
+  const body = JSON.stringify({ article });
+  const res = await request({
+    hostname: SHOP,
+    path: `/admin/api/2025-01/blogs/${blogId}/articles.json`,
+    method: 'POST',
+    headers: {
+      'X-Shopify-Access-Token': token,
+      'Content-Type': 'application/json',
+      'Content-Length': Buffer.byteLength(body),
+    },
+  }, body);
+  return res.body.article;
+}
+
+const BODY_HTML = `
 <p>When I bought my first gun, I walked out with a firearm, a cable lock still in its plastic packaging, and approximately zero useful information about what came next.</p>
 
 <p>The cable lock is sitting in a drawer somewhere. I know I'm not alone in that.</p>
@@ -128,64 +179,41 @@ Your carry gun is with you or in the safe. There is no "just left it on the coun
   <li>Trans Lifeline: 877-565-8860</li>
   <li>ACLU Know Your Rights: <a href="https://www.aclu.org/know-your-rights" target="_blank" rel="noopener">aclu.org/know-your-rights</a></li>
 </ul>
-"""
+`;
 
-ARTICLE = {
-    "article": {
-        "title": "The Part Nobody Talks About at the Gun Store",
-        "handle": "the-part-nobody-talks-about",
-        "body_html": BODY_HTML,
-        "summary_html": "Safe storage, mental health resources, and the honest conversation about risk that gun culture skipped — specifically for queer, BIPOC, progressive, and first-time gun owners.",
-        "tags": "How-To, Responsible Ownership, Field Notes, harm reduction, safe storage, mental health",
-        "published": True,
-    }
-}
+const ARTICLE = {
+  title: 'The Part Nobody Talks About at the Gun Store',
+  handle: 'the-part-nobody-talks-about',
+  body_html: BODY_HTML,
+  summary_html: 'Safe storage, mental health resources, and the honest conversation about risk that gun culture skipped — specifically for queer, BIPOC, progressive, and first-time gun owners.',
+  tags: 'How-To, Responsible Ownership, harm reduction, safe storage, mental health',
+  published: false,
+};
 
+(async () => {
+  try {
+    console.log('Getting access token...');
+    const token = await getAccessToken();
 
-def api_get(path):
-    req = urllib.request.Request(f"{API}{path}", headers=HEADERS)
-    with urllib.request.urlopen(req) as r:
-        return json.loads(r.read())
+    console.log('Fetching blogs...');
+    const blogs = await getBlogs(token);
+    blogs.forEach(b => console.log(`  [${b.id}] ${b.title}`));
 
+    const fieldNotes = blogs.find(b =>
+      b.title.toLowerCase().includes('field') || b.handle.includes('field-notes')
+    );
+    if (!fieldNotes) throw new Error('Could not find Field Notes blog. Check blog list above.');
 
-def api_post(path, data):
-    payload = json.dumps(data).encode()
-    req = urllib.request.Request(f"{API}{path}", data=payload, headers=HEADERS, method="POST")
-    with urllib.request.urlopen(req) as r:
-        return json.loads(r.read())
+    console.log(`\nPosting to: ${fieldNotes.title} (id ${fieldNotes.id})`);
+    const article = await createArticle(token, fieldNotes.id, ARTICLE);
 
-
-def main():
-    print("Fetching blogs...")
-    blogs = api_get("/blogs.json")["blogs"]
-    for b in blogs:
-        print(f"  [{b['id']}] {b['title']} — handle: {b['handle']}")
-
-    field_notes = next(
-        (b for b in blogs if "field" in b["title"].lower() or "field-notes" in b["handle"]),
-        None,
-    )
-
-    if not field_notes:
-        print("\nCouldn't auto-detect Field Notes. Available blogs above.")
-        blog_id = input("Enter blog ID to post to: ").strip()
-    else:
-        blog_id = field_notes["id"]
-        print(f"\nFound: {field_notes['title']} (id {blog_id})")
-
-    print("Creating article...")
-    result = api_post(f"/blogs/{blog_id}/articles.json", ARTICLE)
-    article = result["article"]
-    print(f"\nDone.")
-    print(f"  Title:  {article['title']}")
-    print(f"  Handle: {article['handle']}")
-    print(f"  URL:    https://sinisterstash.com/blogs/{field_notes['handle']}/{article['handle']}")
-    print(f"  Status: {'published' if article['published_at'] else 'draft'}")
-
-
-if __name__ == "__main__":
-    try:
-        main()
-    except urllib.error.HTTPError as e:
-        print(f"HTTP {e.code}: {e.read().decode()}")
-        sys.exit(1)
+    console.log('\nDone.');
+    console.log(`  Title:  ${article.title}`);
+    console.log(`  Handle: ${article.handle}`);
+    console.log(`  Status: draft (hidden) — publish from Shopify admin when ready`);
+    console.log(`  Admin:  https://${SHOP}/admin/articles/${article.id}`);
+  } catch (err) {
+    console.error('Error:', err.message);
+    process.exit(1);
+  }
+})();
