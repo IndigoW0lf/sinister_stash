@@ -486,6 +486,11 @@
         }
       },
       "block_order": [
+        "cat_mental_health",
+        "res_988",
+        "res_trevor",
+        "res_trans_lifeline",
+        "res_crisis_text",
         "cat_lgbtq",
         "res_pink_pistols",
         "res_blazing_sword",
@@ -512,11 +517,6 @@
         "cat_women",
         "res_agag",
         "res_awa",
-        "cat_mental_health",
-        "res_988",
-        "res_trevor",
-        "res_trans_lifeline",
-        "res_crisis_text",
         "cat_training",
         "res_uscca",
         "res_pcs",
