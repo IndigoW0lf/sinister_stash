@@ -138,27 +138,6 @@
         "heading": "SHOP THE STASH"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "FRESH FROM THE STASH",
-        "heading_size": "h1",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "show_view_all": true,
-        "view_all_style": "outline",
-        "swipe_on_mobile": true,
-        "image_ratio": "square",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "padding_top": 80,
-        "padding_bottom": 80
-      }
-    },
     "community_strip": {
       "type": "sinister-community-strip",
       "settings": {
@@ -171,7 +150,6 @@
     "sinister_hero",
     "brand_story",
     "shop_by",
-    "featured_collection",
     "community_strip"
   ]
 }
