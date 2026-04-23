@@ -33,7 +33,7 @@
           "settings": {
             "name": "Project ChildSafe — Free Gun Lock Locator",
             "description": "Find a free gun lock distribution site near you. No purchase required. Over 41 million safety kits distributed.",
-            "url": "https://projectchildsafe.org/safety/find-a-safety-kit"
+            "url": "https://projectchildsafe.org/get-a-safety-kit/"
           }
         },
         "res_gs_besmart": {
@@ -128,7 +128,7 @@
           "settings": {
             "name": "Black Guns Matter",
             "description": "Firearms education and training in urban communities. Founded by Maj Toure. Segal Street to the range.",
-            "url": "https://officialblackgunsmatter.com/"
+            "url": "https://blackgunsmatter.shop/"
           }
         },
         "res_hpn": {
@@ -144,15 +144,7 @@
           "settings": {
             "name": "Latino Rifle Association",
             "description": "Progressive, anti-oppression gun org for Latino gun owners and allies. Built from the ground up at UC Berkeley.",
-            "url": "https://latinorifleassociation.org/"
-          }
-        },
-        "res_hara": {
-          "type": "resource",
-          "settings": {
-            "name": "Hispanic American Rifle Association",
-            "description": "Embracing and educating Hispanic Americans on self-defense and Second Amendment rights.",
-            "url": "https://hararifle.org/"
+            "url": "https://www.instagram.com/latinorifleassociation"
           }
         },
 
@@ -185,14 +177,6 @@
             "name": "A Better Way 2A",
             "description": "Inclusive 2A apparel and advocacy. Proceeds support nonprofits. Gun culture the way it should be — for everyone across the political spectrum.",
             "url": "https://www.abetterway2a.com/"
-          }
-        },
-        "res_jbgc": {
-          "type": "resource",
-          "settings": {
-            "name": "John Brown Gun Club",
-            "description": "Anti-fascist, anti-racist community defense. Named after the abolitionist. Decentralized chapters nationwide.",
-            "url": "https://psjbgc.org/"
           }
         },
         "res_la_progressive": {
@@ -230,9 +214,9 @@
         "res_reddit_sra": {
           "type": "resource",
           "settings": {
-            "name": "r/SocialistRA",
+            "name": "r/ArmedSocialists",
             "description": "The SRA's Reddit home. Community defense discussions, range reports, and mutual aid — no fash allowed.",
-            "url": "https://www.reddit.com/r/SocialistRA/"
+            "url": "https://www.reddit.com/r/armedsocialists/"
           }
         },
         "res_reddit_2alib": {
@@ -331,28 +315,12 @@
             "url": "https://projectchildsafe.org/"
           }
         },
-        "res_besmart": {
-          "type": "resource",
-          "settings": {
-            "name": "Be SMART Campaign",
-            "description": "Secure, Model, Ask, Recognize, Tell — a framework for keeping kids safe around firearms. Backed by Everytown.",
-            "url": "https://besmartforkids.org/"
-          }
-        },
         "res_ask": {
           "type": "resource",
           "settings": {
             "name": "ASK Campaign (Asking Saves Kids)",
             "description": "Encourages parents to ask about guns before their children visit other homes. Simple, effective, evidence-based.",
             "url": "https://www.askingsaveskids.org/"
-          }
-        },
-        "res_pcs_locks": {
-          "type": "resource",
-          "settings": {
-            "name": "Project ChildSafe — Free Gun Lock Locator",
-            "description": "Find a free gun lock distribution site near you. No purchase required. Over 41 million safety kits distributed.",
-            "url": "https://projectchildsafe.org/safety/find-a-safety-kit"
           }
         },
         "res_goro": {
@@ -497,7 +465,7 @@
           "settings": {
             "name": "Johns Hopkins Center for Gun Violence Solutions",
             "description": "Evidence-based research and policy analysis from one of the world's top public health schools. The academic backbone of smart gun legislation.",
-            "url": "https://publichealth.jhu.edu/centers/center-for-gun-violence-solutions"
+            "url": "https://publichealth.jhu.edu/center-for-gun-violence-solutions/solutions"
           }
         },
         "res_rand": {
@@ -523,6 +491,7 @@
         "res_trevor",
         "res_trans_lifeline",
         "res_crisis_text",
+        "res_afsp",
         "cat_lgbtq",
         "res_pink_pistols",
         "res_blazing_sword",
@@ -534,7 +503,6 @@
         "res_bgm",
         "res_hpn",
         "res_lra",
-        "res_hara",
         "cat_women",
         "res_agag",
         "res_awa",
@@ -542,7 +510,6 @@
         "res_sra",
         "res_lgc",
         "res_abw2a",
-        "res_jbgc",
         "res_la_progressive",
         "cat_community",
         "res_ayf",
@@ -557,11 +524,8 @@
         "cat_training",
         "res_uscca",
         "res_pcs",
-        "res_besmart",
         "res_ask",
-        "res_pcs_locks",
         "res_goro",
-        "res_afsp",
         "cat_legal",
         "res_uscca_map",
         "res_handgunlaw",
