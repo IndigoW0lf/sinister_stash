@@ -1066,6 +1066,157 @@ body .sg-why-section .breadcrumbs__list {
 }
 
 /* ----------------------------------------
+   Resources Page
+---------------------------------------- */
+.ss-resources-intro {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  color: rgba(240, 237, 234, 0.7);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.ss-resources-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 20px 0 28px;
+  border-top: 1px solid rgba(240, 237, 234, 0.12);
+  border-bottom: 1px solid rgba(240, 237, 234, 0.12);
+  margin-bottom: 48px;
+  list-style: none;
+}
+
+.ss-resources-nav li {
+  margin: 0;
+  padding: 0;
+}
+
+.ss-resources-nav a {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(240, 237, 234, 0.55);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  white-space: nowrap;
+}
+
+.ss-resources-nav a:hover {
+  color: #F0645A;
+}
+
+.ss-resources-section {
+  margin-bottom: 56px;
+  scroll-margin-top: 80px;
+}
+
+.ss-resources-section h2 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #F0645A;
+  margin-bottom: 4px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(240, 100, 90, 0.25);
+}
+
+.ss-resources-section p {
+  font-size: 14px;
+  color: rgba(240, 237, 234, 0.65);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.ss-resources-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 0;
+}
+
+.ss-resources-section ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(240, 237, 234, 0.07);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #eef4f0;
+}
+
+.ss-resources-section ul li:last-child {
+  border-bottom: none;
+}
+
+.ss-resources-section ul li a {
+  color: #4AD4A8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.ss-resources-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.ss-resources-section ul li .ss-res-desc {
+  display: block;
+  font-size: 13px;
+  color: rgba(240, 237, 234, 0.5);
+  margin-top: 2px;
+  font-weight: 400;
+}
+
+.ss-resources-position {
+  background: #1C2830;
+  border-left: 3px solid #F0645A;
+  padding: 24px 28px;
+  margin-bottom: 56px;
+  border-radius: 2px;
+}
+
+.ss-resources-position h2 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #F0645A;
+  margin-bottom: 16px;
+  border: none;
+  padding: 0;
+}
+
+.ss-resources-position p {
+  font-size: 14px;
+  color: rgba(240, 237, 234, 0.8);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.ss-resources-position p:last-child {
+  margin-bottom: 0;
+}
+
+.ss-resources-closing {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  color: rgba(240, 237, 234, 0.35);
+  font-style: italic;
+  text-align: center;
+  padding-top: 16px;
+}
+
+@media screen and (max-width: 749px) {
+  .ss-resources-nav {
+    gap: 10px 12px;
+  }
+  .ss-resources-nav a {
+    font-size: 11px;
+  }
+}
+
+/* ----------------------------------------
    Footer Crisis Line
 ---------------------------------------- */
 .footer__crisis-line {
