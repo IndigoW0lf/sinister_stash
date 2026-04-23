@@ -1,10 +1,26 @@
 <div class="sg-resources color-{{ section.settings.color_scheme }}">
+
   <!-- Hero -->
   <div class="sg-resources__hero">
     <div class="page-width">
       <p class="sg-resources__eyebrow">{{ section.settings.eyebrow }}</p>
       <h1 class="sg-resources__title">{{ section.settings.title }}</h1>
       <p class="sg-resources__intro">{{ section.settings.intro }}</p>
+    </div>
+  </div>
+
+  <!-- Jump Nav -->
+  <div class="sg-resources__jump-nav-wrap">
+    <div class="page-width">
+      <nav class="sg-resources__jump-nav" aria-label="Jump to section">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'category' or block.type == 'position_box' -%}
+            <a href="#cat-{{ block.settings.heading | handleize }}" class="sg-resources__jump-link">
+              {{- block.settings.heading -}}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </nav>
     </div>
   </div>
 
@@ -18,7 +34,7 @@
           {%- if accordion_open -%}
             </div></details>
           {%- endif -%}
-          <details class="sg-resources__accordion" id="sg-cat-{{ forloop.index }}" {{ block.shopify_attributes }}>
+          <details class="sg-resources__accordion" id="cat-{{ block.settings.heading | handleize }}" {{ block.shopify_attributes }}>
             <summary class="sg-resources__accordion-summary">
               <div class="sg-resources__accordion-heading-wrap">
                 <h2 class="sg-resources__category-title">{{ block.settings.heading }}</h2>
@@ -40,6 +56,16 @@
             <span class="sg-resources__card-arrow" aria-hidden="true">&rarr;</span>
           </a>
 
+        {%- when 'position_box' -%}
+          {%- if accordion_open -%}
+            </div></details>
+            {%- assign accordion_open = false -%}
+          {%- endif -%}
+          <div class="sg-resources__position-box" id="cat-{{ block.settings.heading | handleize }}" {{ block.shopify_attributes }}>
+            <h2 class="sg-resources__position-heading">{{ block.settings.heading }}</h2>
+            <div class="sg-resources__position-content">{{ block.settings.content }}</div>
+          </div>
+
       {%- endcase -%}
     {%- endfor -%}
     {%- if accordion_open -%}
@@ -58,12 +84,25 @@
   </div>
 </div>
 
+<script>
+  document.querySelectorAll('.sg-resources__jump-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target && target.tagName === 'DETAILS') {
+        target.setAttribute('open', '');
+      }
+    });
+  });
+</script>
+
 <style>
   .sg-resources {
     background-color: rgb(var(--color-background));
     color: rgb(var(--color-foreground));
   }
 
+  /* Hero */
   .sg-resources__hero {
     padding: 6rem 2.4rem 4rem;
     text-align: center;
@@ -113,7 +152,50 @@
     }
   }
 
-  /* Body / Cards */
+  /* Jump Nav */
+  .sg-resources__jump-nav-wrap {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: rgb(var(--color-background));
+  }
+
+  .sg-resources__jump-nav {
+    display: flex;
+    gap: 0.8rem;
+    overflow-x: auto;
+    padding-bottom: 0.4rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .sg-resources__jump-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sg-resources__jump-link {
+    display: inline-block;
+    flex-shrink: 0;
+    padding: 0.6rem 1.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: var(--font-body-family);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .sg-resources__jump-link:hover {
+    border-color: rgb(var(--color-coral));
+    color: rgb(var(--color-coral));
+    background-color: rgba(var(--color-coral), 0.06);
+  }
+
+  /* Body */
   .sg-resources__body {
     padding-top: 2rem;
     padding-bottom: 8rem;
@@ -278,6 +360,41 @@
     transition: color 0.2s ease, transform 0.2s ease;
   }
 
+  /* Our Position box */
+  .sg-resources__position-box {
+    margin-top: 6.4rem;
+    padding: 4rem 4.8rem;
+    border-left: 3px solid rgb(var(--color-coral));
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  .sg-resources__position-heading {
+    font-family: var(--font-heading-family);
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgb(var(--color-coral));
+    margin-bottom: 2rem;
+  }
+
+  .sg-resources__position-content p {
+    font-family: var(--font-body-family);
+    font-size: 1.6rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.6rem;
+  }
+
+  .sg-resources__position-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .sg-resources__position-content p {
+      font-size: 1.7rem;
+    }
+  }
+
   /* Bottom CTA */
   .sg-resources__cta {
     margin-top: 6.4rem;
@@ -323,7 +440,7 @@
       "type": "textarea",
       "id": "intro",
       "label": "Intro text",
-      "default": "The mark is personal. The movement is collective. These organizations are building the culture we believe in — inclusive, informed, and unafraid. Bookmark the ones that speak to you."
+      "default": "The organizations, resources, and honest information gun culture never gave you."
     },
     {
       "type": "textarea",
@@ -384,27 +501,28 @@
           "label": "Link URL"
         }
       ]
+    },
+    {
+      "type": "position_box",
+      "name": "Our Position Box",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Our Position"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Resources Page",
-      "blocks": [
-        {
-          "type": "category",
-          "settings": {
-            "heading": "Inclusive Gun Clubs & Communities",
-            "description": "Spaces built for the rest of us."
-          }
-        },
-        {
-          "type": "resource",
-          "settings": {
-            "name": "Pink Pistols",
-            "description": "LGBTQ+ gun rights organization with 45+ chapters nationwide. \"Armed queers don't get bashed.\""
-          }
-        }
-      ]
+      "name": "Resources Page"
     }
   ],
   "max_blocks": 80

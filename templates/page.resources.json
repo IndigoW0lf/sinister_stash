@@ -15,12 +15,51 @@
         "color_scheme": "scheme-1",
         "eyebrow": "SINISTER STASH",
         "title": "Resources",
-        "intro": "The mark is personal. The movement is collective. These organizations are building the culture we believe in — inclusive, informed, and unafraid. We also include the stuff gun culture skips: safe storage, mental health resources, and honest information about risk. Bookmark the ones that speak to you.",
+        "intro": "The organizations, resources, and honest information gun culture never gave you.",
         "cta_text": "Know an organization we should include? We're always listening.",
         "cta_button_label": "GET IN TOUCH",
         "cta_link": "/pages/contact"
       },
       "blocks": {
+        "cat_getting_started": {
+          "type": "category",
+          "settings": {
+            "heading": "Getting Started",
+            "description": "Bought your first gun and have no idea what comes next. Start here."
+          }
+        },
+        "res_gs_locks": {
+          "type": "resource",
+          "settings": {
+            "name": "Project ChildSafe — Free Gun Lock Locator",
+            "description": "Find a free gun lock distribution site near you. No purchase required. Over 41 million safety kits distributed.",
+            "url": "https://projectchildsafe.org/safety/find-a-safety-kit"
+          }
+        },
+        "res_gs_besmart": {
+          "type": "resource",
+          "settings": {
+            "name": "Be SMART for Kids",
+            "description": "Secure, Model, Ask, Recognize, Tell — a practical safe storage framework for homes with children.",
+            "url": "https://besmartforkids.org/"
+          }
+        },
+        "res_gs_uscca_map": {
+          "type": "resource",
+          "settings": {
+            "name": "USCCA State Law & Reciprocity Map",
+            "description": "Know what you're legally allowed to do in your state — and which states honor your permit — before you carry or travel.",
+            "url": "https://www.usconcealedcarry.com/resources/ccw_reciprocity_map/"
+          }
+        },
+        "res_gs_field_notes": {
+          "type": "resource",
+          "settings": {
+            "name": "The Part Nobody Talks About at the Gun Store",
+            "description": "Our field notes post on safe storage, legal basics, and the harder conversations. Read this first.",
+            "url": "/blogs/field-notes/the-part-nobody-talks-about-at-the-gun-store"
+          }
+        },
         "cat_lgbtq": {
           "type": "category",
           "settings": {
@@ -392,8 +431,8 @@
         "cat_prevention": {
           "type": "category",
           "settings": {
-            "heading": "Violence Prevention",
-            "description": "We love guns. We hate what happens when the wrong people get them."
+            "heading": "Gun Violence Prevention",
+            "description": "You can own a firearm and want this work to succeed. Most gun owners do. These organizations do the research, the journalism, the policy work, and the community intervention."
           }
         },
         "res_shp": {
@@ -437,13 +476,6 @@
           }
         },
 
-        "cat_advocacy": {
-          "type": "category",
-          "settings": {
-            "heading": "Responsible Gun Law Advocacy",
-            "description": "You can love the Second Amendment and still want background checks. These aren't contradictions."
-          }
-        },
         "res_giffords": {
           "type": "resource",
           "settings": {
@@ -478,10 +510,10 @@
         },
 
         "cat_our_position": {
-          "type": "category",
+          "type": "position_box",
           "settings": {
             "heading": "Our Position",
-            "description": "We support universal background checks, red flag laws, and safe storage legislation. This is not a political concession — it's consistent with owning responsibly and giving a damn about the broader world we live in. You can be a gun owner and want these things. Most of us do."
+            "content": "<p>We support safe storage legislation. We support measures that reduce gun violence.<\/p><p>On universal background checks and red flag laws: we support the intent. We also hold real concerns about how these mechanisms get applied to the communities we serve — LGBTQ+ people, BIPOC gun owners, people whose mental health history could be used against them by institutions that haven't always acted in good faith. Those concerns don't disappear because the goal is right.<\/p><p>We're not going to hand you a clean position on this. The people this brand is for deserve an honest one instead.<\/p>"
           }
         }
       },
@@ -503,6 +535,9 @@
         "res_hpn",
         "res_lra",
         "res_hara",
+        "cat_women",
+        "res_agag",
+        "res_awa",
         "cat_progressive",
         "res_sra",
         "res_lgc",
@@ -514,9 +549,11 @@
         "res_reddit_lgo",
         "res_reddit_sra",
         "res_reddit_2alib",
-        "cat_women",
-        "res_agag",
-        "res_awa",
+        "cat_getting_started",
+        "res_gs_locks",
+        "res_gs_besmart",
+        "res_gs_uscca_map",
+        "res_gs_field_notes",
         "cat_training",
         "res_uscca",
         "res_pcs",
@@ -538,7 +575,6 @@
         "res_everytown",
         "res_trace",
         "res_cvg",
-        "cat_advocacy",
         "res_giffords",
         "res_brady",
         "res_jhu",
