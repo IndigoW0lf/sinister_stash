@@ -96,48 +96,6 @@
         "color_scheme": "scheme-2"
       }
     },
-    "shop_by": {
-      "type": "sinister-shop-by",
-      "blocks": {
-        "cat-apparel": {
-          "type": "category",
-          "settings": {
-            "title": "APPAREL"
-          }
-        },
-        "cat-stickers": {
-          "type": "category",
-          "settings": {
-            "title": "STICKERS",
-            "subtitle": "COMING SOON"
-          }
-        },
-        "cat-patches": {
-          "type": "category",
-          "settings": {
-            "title": "PATCHES",
-            "subtitle": "COMING SOON"
-          }
-        },
-        "cat-range-gear": {
-          "type": "category",
-          "settings": {
-            "title": "RANGE GEAR",
-            "subtitle": "COMING SOON"
-          }
-        }
-      },
-      "block_order": [
-        "cat-apparel",
-        "cat-stickers",
-        "cat-patches",
-        "cat-range-gear"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "heading": "SHOP THE STASH"
-      }
-    },
     "community_strip": {
       "type": "sinister-community-strip",
       "settings": {
@@ -149,7 +107,6 @@
   "order": [
     "sinister_hero",
     "brand_story",
-    "shop_by",
     "community_strip"
   ]
 }
