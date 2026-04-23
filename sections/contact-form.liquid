@@ -31,10 +31,11 @@
     -%}
     {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
       {%- if form.posted_successfully? -%}
-        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+        <h2 class="form-status form-status-list form__message" tabindex="-1">
           {{- 'icon-success.svg' | inline_asset_content -}}
           {{ 'templates.contact.form.post_success' | t }}
         </h2>
+        <script>window.scrollTo({ top: 0, behavior: 'smooth' });</script>
       {%- elsif form.errors -%}
         <div class="form__message">
           <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
@@ -51,6 +52,27 @@
           </li>
         </ul>
       {%- endif -%}
+      <div class="sinister-topic-field">
+        <label class="sinister-label" for="ContactForm_topic">
+          What's this about? <span aria-hidden="true">*</span>
+        </label>
+        <div class="sinister-select-wrapper">
+          <select
+            class="sinister-select"
+            id="ContactForm_topic"
+            name="contact[topic]"
+            required
+          >
+            <option value="" disabled selected>Choose a topic</option>
+            <option value="[CLAIM] Custom Engraving Request">Custom engraving request</option>
+            <option value="[ORDER] Order question or issue">Order question or issue</option>
+            <option value="[WHOLESALE] Wholesale inquiry">Wholesale / bulk inquiry</option>
+            <option value="[COLLAB] Collaboration or press">Collaboration or press</option>
+            <option value="[GENERAL] General question">Something else</option>
+          </select>
+          <span class="sinister-select-arrow" aria-hidden="true">↓</span>
+        </div>
+      </div>
       <div class="contact__fields">
         <div class="field">
           <input
@@ -100,19 +122,6 @@
         </div>
       </div>
       <div class="field">
-        <input
-          type="tel"
-          id="ContactForm-phone"
-          class="field__input"
-          autocomplete="tel"
-          name="contact[{{ 'templates.contact.form.phone' | t }}]"
-          pattern="[0-9\-]*"
-          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-          placeholder="{{ 'templates.contact.form.phone' | t }}"
-        >
-        <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
-      </div>
-      <div class="field">
         <textarea
           rows="10"
           id="ContactForm-body"
@@ -131,6 +140,28 @@
           {{ 'templates.contact.form.send' | t }}
         </button>
       </div>
+      <script>
+        (function() {
+          var select = document.getElementById('ContactForm_topic');
+          var form = select ? select.closest('form') : null;
+          if (!form) return;
+
+          var subjectInput = form.querySelector('input[name="contact[subject]"]');
+          if (!subjectInput) {
+            subjectInput = document.createElement('input');
+            subjectInput.type = 'hidden';
+            subjectInput.name = 'contact[subject]';
+            form.appendChild(subjectInput);
+          }
+
+          function updateSubject() {
+            subjectInput.value = select.value || 'Contact form submission';
+          }
+
+          select.addEventListener('change', updateSubject);
+          updateSubject();
+        })();
+      </script>
     {%- endform -%}
   </div>
 </div>

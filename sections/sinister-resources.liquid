@@ -8,18 +8,28 @@
     </div>
   </div>
 
-  <!-- Resource Categories -->
+  <!-- Resource Categories (accordion) -->
   <div class="sg-resources__body page-width">
+    {%- assign accordion_open = false -%}
     {%- for block in section.blocks -%}
       {%- case block.type -%}
 
         {%- when 'category' -%}
-          <div class="sg-resources__category" id="sg-cat-{{ forloop.index }}" {{ block.shopify_attributes }}>
-            <div class="sg-resources__category-header">
-              <h2 class="sg-resources__category-title">{{ block.settings.heading }}</h2>
-              <p class="sg-resources__category-desc">{{ block.settings.description }}</p>
-            </div>
-          </div>
+          {%- if accordion_open -%}
+            </div></details>
+          {%- endif -%}
+          <details class="sg-resources__accordion" id="sg-cat-{{ forloop.index }}" {{ block.shopify_attributes }}>
+            <summary class="sg-resources__accordion-summary">
+              <div class="sg-resources__accordion-heading-wrap">
+                <h2 class="sg-resources__category-title">{{ block.settings.heading }}</h2>
+                {%- if block.settings.description != blank -%}
+                  <p class="sg-resources__category-desc">{{ block.settings.description }}</p>
+                {%- endif -%}
+              </div>
+              <span class="sg-resources__accordion-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="sg-resources__accordion-body">
+          {%- assign accordion_open = true -%}
 
         {%- when 'resource' -%}
           <a href="{{ block.settings.url }}" target="_blank" rel="noopener noreferrer" class="sg-resources__card" {{ block.shopify_attributes }}>
@@ -27,11 +37,14 @@
               <h3 class="sg-resources__card-name">{{ block.settings.name }}</h3>
               <p class="sg-resources__card-desc">{{ block.settings.description }}</p>
             </div>
-            <span class="sg-resources__card-arrow">&rarr;</span>
+            <span class="sg-resources__card-arrow" aria-hidden="true">&rarr;</span>
           </a>
 
       {%- endcase -%}
     {%- endfor -%}
+    {%- if accordion_open -%}
+      </div></details>
+    {%- endif -%}
 
     <!-- CTA -->
     <div class="sg-resources__cta">
@@ -106,23 +119,45 @@
     padding-bottom: 8rem;
   }
 
-  /* Category headers */
-  .sg-resources__category {
-    padding-top: 5.6rem;
-    margin-bottom: 2.4rem;
+  /* Accordion */
+  .sg-resources__accordion {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .sg-resources__category:first-child {
-    border-top: none;
+  .sg-resources__accordion:last-of-type {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .sg-resources__accordion-summary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2.4rem;
+    padding: 3.6rem 0;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .sg-resources__accordion-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .sg-resources__accordion-heading-wrap {
+    flex: 1;
   }
 
   .sg-resources__category-title {
     font-family: var(--font-heading-family);
     font-size: 2.8rem;
     text-transform: uppercase;
+    letter-spacing: 0.04em;
     color: rgb(var(--color-ice-white));
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.4rem;
+    transition: color 0.15s ease;
+  }
+
+  .sg-resources__accordion-summary:hover .sg-resources__category-title {
+    color: rgb(var(--color-coral));
   }
 
   @media screen and (min-width: 750px) {
@@ -137,6 +172,56 @@
     color: rgba(255, 255, 255, 0.5);
     line-height: 1.6;
     max-width: 56rem;
+    margin: 0;
+  }
+
+  /* +/– icon */
+  .sg-resources__accordion-icon {
+    flex-shrink: 0;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-top: 0.6rem;
+    position: relative;
+    color: rgba(255, 255, 255, 0.3);
+    transition: color 0.15s ease;
+  }
+
+  .sg-resources__accordion-icon::before,
+  .sg-resources__accordion-icon::after {
+    content: '';
+    position: absolute;
+    background: currentColor;
+    border-radius: 1px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .sg-resources__accordion-icon::before {
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+
+  .sg-resources__accordion-icon::after {
+    width: 2px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .sg-resources__accordion[open] .sg-resources__accordion-icon {
+    color: rgb(var(--color-coral));
+  }
+
+  .sg-resources__accordion[open] .sg-resources__accordion-icon::after {
+    opacity: 0;
+    transform: translateX(-50%) rotate(90deg);
+  }
+
+  .sg-resources__accordion-body {
+    padding-bottom: 3.2rem;
   }
 
   /* Resource cards */

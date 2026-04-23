@@ -15,7 +15,7 @@
         "color_scheme": "scheme-1",
         "eyebrow": "SINISTER STASH",
         "title": "Resources",
-        "intro": "The mark is personal. The movement is collective. These organizations are building the culture we believe in — inclusive, informed, and unafraid. Bookmark the ones that speak to you.",
+        "intro": "The mark is personal. The movement is collective. These organizations are building the culture we believe in — inclusive, informed, and unafraid. We also include the stuff gun culture skips: safe storage, mental health resources, and honest information about risk. Bookmark the ones that speak to you.",
         "cta_text": "Know an organization we should include? We're always listening.",
         "cta_button_label": "GET IN TOUCH",
         "cta_link": "/pages/contact"
@@ -229,6 +229,46 @@
           }
         },
 
+        "cat_mental_health": {
+          "type": "category",
+          "settings": {
+            "heading": "Mental Health & Crisis Resources",
+            "description": "For when it gets hard. LGBTQ+ people — particularly trans people — face dramatically elevated rates of suicidal ideation. We're not going to pretend otherwise or bury a hotline number you'll never see. These people pick up."
+          }
+        },
+        "res_988": {
+          "type": "resource",
+          "settings": {
+            "name": "988 Suicide & Crisis Lifeline",
+            "description": "Call or text 988. Free, confidential, 24 hours. The national crisis line.",
+            "url": "https://988lifeline.org/"
+          }
+        },
+        "res_trevor": {
+          "type": "resource",
+          "settings": {
+            "name": "The Trevor Project",
+            "description": "LGBTQ+ crisis support. Call 1-866-488-7386 or text START to 678-678. 24 hours. If you're a queer young person in crisis, these are your people.",
+            "url": "https://www.thetrevorproject.org/"
+          }
+        },
+        "res_trans_lifeline": {
+          "type": "resource",
+          "settings": {
+            "name": "Trans Lifeline",
+            "description": "Peer support by and for trans people. Call 877-565-8860. Staffed by trans people. No cops dispatched without consent.",
+            "url": "https://translifeline.org/"
+          }
+        },
+        "res_crisis_text": {
+          "type": "resource",
+          "settings": {
+            "name": "Crisis Text Line",
+            "description": "Text HOME to 741741. Free, 24/7 crisis support over text. For when a phone call isn't an option.",
+            "url": "https://www.crisistextline.org/"
+          }
+        },
+
         "cat_training": {
           "type": "category",
           "settings": {
@@ -258,6 +298,22 @@
             "name": "Be SMART Campaign",
             "description": "Secure, Model, Ask, Recognize, Tell — a framework for keeping kids safe around firearms. Backed by Everytown.",
             "url": "https://besmartforkids.org/"
+          }
+        },
+        "res_ask": {
+          "type": "resource",
+          "settings": {
+            "name": "ASK Campaign (Asking Saves Kids)",
+            "description": "Encourages parents to ask about guns before their children visit other homes. Simple, effective, evidence-based.",
+            "url": "https://www.askingsaveskids.org/"
+          }
+        },
+        "res_pcs_locks": {
+          "type": "resource",
+          "settings": {
+            "name": "Project ChildSafe — Free Gun Lock Locator",
+            "description": "Find a free gun lock distribution site near you. No purchase required. Over 41 million safety kits distributed.",
+            "url": "https://projectchildsafe.org/safety/find-a-safety-kit"
           }
         },
         "res_goro": {
@@ -322,6 +378,14 @@
             "name": "Firearms Policy Coalition",
             "description": "Aggressive legal challenges to unconstitutional gun laws. Very active in the courts and winning.",
             "url": "https://www.firearmspolicy.org/"
+          }
+        },
+        "res_aclu_kyr": {
+          "type": "resource",
+          "settings": {
+            "name": "ACLU — Know Your Rights",
+            "description": "Your rights during police encounters, traffic stops, and searches. Essential reading for BIPOC gun carriers and anyone who wants to know where they stand.",
+            "url": "https://www.aclu.org/know-your-rights"
           }
         },
 
@@ -411,6 +475,14 @@
             "description": "Nonpartisan research on what gun policies actually work. No agenda — just evidence.",
             "url": "https://www.rand.org/research/gun-policy.html"
           }
+        },
+
+        "cat_our_position": {
+          "type": "category",
+          "settings": {
+            "heading": "Our Position",
+            "description": "We support universal background checks, red flag laws, and safe storage legislation. This is not a political concession — it's consistent with owning responsibly and giving a damn about the broader world we live in. You can be a gun owner and want these things. Most of us do."
+          }
         }
       },
       "block_order": [
@@ -440,10 +512,17 @@
         "cat_women",
         "res_agag",
         "res_awa",
+        "cat_mental_health",
+        "res_988",
+        "res_trevor",
+        "res_trans_lifeline",
+        "res_crisis_text",
         "cat_training",
         "res_uscca",
         "res_pcs",
         "res_besmart",
+        "res_ask",
+        "res_pcs_locks",
         "res_goro",
         "res_afsp",
         "cat_legal",
@@ -452,6 +531,7 @@
         "res_usacarry",
         "res_saf",
         "res_fpc",
+        "res_aclu_kyr",
         "cat_prevention",
         "res_shp",
         "res_mfol",
@@ -462,7 +542,8 @@
         "res_giffords",
         "res_brady",
         "res_jhu",
-        "res_rand"
+        "res_rand",
+        "cat_our_position"
       ]
     }
   },

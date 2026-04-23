@@ -212,6 +212,14 @@
   border-color: #4AD4A8;
 }
 
+/* Error message */
+.sg-popup__error {
+  font-family: var(--font-body-family), 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  color: #F0645A;
+  margin: 0.8rem 0 0;
+}
+
 /* Code hint */
 .sg-popup__code-hint {
   font-family: var(--font-body-family), 'Space Grotesk', sans-serif;
