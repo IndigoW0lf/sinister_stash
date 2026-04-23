@@ -65,8 +65,17 @@ jobs:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
         run: |
           npm install -g @shopify/cli@latest @shopify/theme@latest
+
+          # Push to sinisterstash.myshopify.com
           shopify theme push \
             --store sinisterstash.myshopify.com \
             --theme 187716796738 \
             --allow-live \
-            --no-color
+            --no-color || echo "⚠️  Push to sinisterstash failed — continuing"
+
+          # Push to sinister-goods-2.myshopify.com
+          shopify theme push \
+            --store sinister-goods-2.myshopify.com \
+            --theme 187716796738 \
+            --allow-live \
+            --no-color || echo "⚠️  Push to sinister-goods-2 failed — continuing"
