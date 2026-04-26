@@ -24,6 +24,12 @@
   --media-radius: 0px;
 }
 
+/* PS TIER CONDENSED — global letter-spacing for readability */
+/* All heading elements use the heading font, so this covers them universally */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.04em;
+}
+
 /* GLOBAL DARK BACKGROUND — override Dawn's CSS custom properties */
 /* Dawn uses --color-background: R,G,B then rgb(var(--color-background)) */
 /* We must override the custom property itself, not just background-color */
