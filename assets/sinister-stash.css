@@ -418,13 +418,13 @@ a:not(.button):hover {
 
 /* Collection hero spacing */
 .collection-hero {
-  padding-top: 3rem;
+  padding-top: 4rem;
   padding-bottom: 0;
 }
 
 @media screen and (min-width: 750px) {
   .collection-hero {
-    padding-top: 4rem;
+    padding-top: 6.5rem;
     padding-bottom: 0;
   }
 }
@@ -545,9 +545,9 @@ cart-remove-button a:hover {
    ============================================ */
 
 .why-page {
-  max-width: 840px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 50px 16px 80px;
+  padding: 50px 3.6rem 80px;
   color: #eef4f0;
   font-family: var(--font-body-family), 'Space Grotesk', sans-serif;
 }
