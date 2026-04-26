@@ -11,6 +11,16 @@
     margin: 0 !important;
     line-height: 1.0 !important;
   }
+  .collection-hero {
+    padding-top: 4rem !important;
+    padding-bottom: 0 !important;
+  }
+  @media screen and (min-width: 750px) {
+    .collection-hero {
+      padding-top: 6.5rem !important;
+      padding-bottom: 0 !important;
+    }
+  }
 {%- endstyle -%}
 
 <div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
