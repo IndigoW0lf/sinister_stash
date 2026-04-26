@@ -1,0 +1,166 @@
+<nav class="ss-col-nav">
+  <div class="ss-col-nav__inner page-width">
+
+    <a href="/collections/all"
+       class="ss-col-nav__tile{% if collection.handle == 'all' %} is-active{% endif %}">
+      {%- if section.settings.all_image -%}
+        <div class="ss-col-nav__tile-img">
+          {{ section.settings.all_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: 'All' }}
+        </div>
+      {%- endif -%}
+      <span class="ss-col-nav__tile-label">ALL</span>
+    </a>
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'category' -%}
+        <a href="/collections/{{ block.settings.handle }}"
+           class="ss-col-nav__tile{% if collection.handle == block.settings.handle %} is-active{% endif %}"
+           {{ block.shopify_attributes }}>
+          {%- if block.settings.image -%}
+            <div class="ss-col-nav__tile-img">
+              {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', alt: block.settings.label }}
+            </div>
+          {%- endif -%}
+          <span class="ss-col-nav__tile-label">{{ block.settings.label }}</span>
+        </a>
+      {%- endif -%}
+    {%- endfor -%}
+
+  </div>
+</nav>
+
+<style>
+  .ss-col-nav {
+    padding: 0 0 3.2rem;
+  }
+
+  .ss-col-nav__inner {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .ss-col-nav__tile {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    min-width: 14rem;
+    min-height: 10rem;
+    flex: 1 1 14rem;
+    max-width: 22rem;
+    padding: 1.6rem 1.8rem;
+    border: 1px solid rgba(238, 244, 240, 0.15);
+    text-decoration: none;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+    background-color: rgba(238, 244, 240, 0.04);
+  }
+
+  .ss-col-nav__tile:hover {
+    border-color: rgba(238, 244, 240, 0.4);
+  }
+
+  .ss-col-nav__tile.is-active {
+    border-color: #F0645A;
+    background-color: rgba(240, 100, 90, 0.08);
+  }
+
+  .ss-col-nav__tile-img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .ss-col-nav__tile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+  }
+
+  .ss-col-nav__tile.is-active .ss-col-nav__tile-img img {
+    opacity: 0.5;
+  }
+
+  .ss-col-nav__tile-label {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-heading-family);
+    font-size: 2.4rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #eef4f0;
+  }
+
+  .ss-col-nav__tile.is-active .ss-col-nav__tile-label {
+    color: #F0645A;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ss-col-nav__inner {
+      gap: 0.8rem;
+    }
+    .ss-col-nav__tile {
+      min-width: 10rem;
+      min-height: 8rem;
+      max-width: none;
+      flex: 1 1 10rem;
+      padding: 1.2rem 1.4rem;
+    }
+    .ss-col-nav__tile-label {
+      font-size: 1.8rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection Nav",
+  "class": "ss-collection-nav-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "all_image",
+      "label": "\"All\" tile image (optional)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category tile",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "T-SHIRTS"
+        },
+        {
+          "type": "text",
+          "id": "handle",
+          "label": "Collection handle",
+          "info": "The URL slug of the collection, e.g. t-shirt",
+          "default": "t-shirt"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Tile image (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Nav",
+      "blocks": [
+        { "type": "category", "settings": { "label": "T-SHIRTS", "handle": "t-shirt" } },
+        { "type": "category", "settings": { "label": "HOODIES", "handle": "hoodie" } },
+        { "type": "category", "settings": { "label": "STICKERS", "handle": "sticker" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

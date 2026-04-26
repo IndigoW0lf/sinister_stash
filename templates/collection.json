@@ -8,6 +8,38 @@
         "color_scheme": "scheme-1"
       }
     },
+    "collection-nav": {
+      "type": "sinister-collection-nav",
+      "blocks": {
+        "tile-tshirt": {
+          "type": "category",
+          "settings": {
+            "label": "T-SHIRTS",
+            "handle": "t-shirt"
+          }
+        },
+        "tile-hoodie": {
+          "type": "category",
+          "settings": {
+            "label": "HOODIES",
+            "handle": "hoodie"
+          }
+        },
+        "tile-sticker": {
+          "type": "category",
+          "settings": {
+            "label": "STICKERS",
+            "handle": "sticker"
+          }
+        }
+      },
+      "block_order": [
+        "tile-tshirt",
+        "tile-hoodie",
+        "tile-sticker"
+      ],
+      "settings": {}
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
@@ -27,6 +59,7 @@
   },
   "order": [
     "banner",
+    "collection-nav",
     "product-grid"
   ]
 }
