@@ -418,23 +418,24 @@ a:not(.button):hover {
 
 /* Collection hero spacing */
 .collection-hero {
-  padding-top: 6rem;
-  padding-bottom: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 0;
 }
 
 @media screen and (min-width: 750px) {
   .collection-hero {
-    padding-top: 10rem;
-    padding-bottom: 2rem;
+    padding-top: 4rem;
+    padding-bottom: 0;
   }
 }
 
-/* Collection title */
+/* Collection title — matches homepage headline */
 .collection-hero__title {
   font-family: var(--font-heading-family);
-  font-size: 4.8rem;
+  font-size: 4.2rem;
+  line-height: 1.0;
   text-transform: uppercase;
-  margin: 0 0 1rem;
+  margin: 0;
 }
 
 @media screen and (min-width: 750px) {
@@ -546,7 +547,7 @@ cart-remove-button a:hover {
 .why-page {
   max-width: 840px;
   margin: 0 auto;
-  padding: 80px 24px 120px;
+  padding: 50px 16px 80px;
   color: #eef4f0;
   font-family: var(--font-body-family), 'Space Grotesk', sans-serif;
 }
