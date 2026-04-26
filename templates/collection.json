@@ -15,21 +15,21 @@
           "type": "category",
           "settings": {
             "label": "T-SHIRTS",
-            "handle": "t-shirt"
+            "handle": "t-shirts"
           }
         },
         "tile-hoodie": {
           "type": "category",
           "settings": {
             "label": "HOODIES",
-            "handle": "hoodie"
+            "handle": "hoodies"
           }
         },
         "tile-sticker": {
           "type": "category",
           "settings": {
             "label": "STICKERS",
-            "handle": "sticker"
+            "handle": "stickers"
           }
         }
       },
