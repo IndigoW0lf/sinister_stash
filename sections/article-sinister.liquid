@@ -35,6 +35,18 @@
     </div>
   </header>
 
+  <!-- HERO IMAGE -->
+  {%- if article.image -%}
+    <div class="ss-article__hero-image">
+      {{ article.image | image_url: width: 1600 | image_tag:
+        loading: 'eager',
+        class: 'ss-article__hero-img',
+        widths: '600, 900, 1200, 1600',
+        alt: article.image.alt | default: article.title
+      }}
+    </div>
+  {%- endif -%}
+
   <!-- POST BODY -->
   <div class="ss-article__body" itemprop="articleBody">
     {{ article.content }}
