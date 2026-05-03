@@ -192,6 +192,28 @@ a:not(.button):hover {
   height: auto;
 }
 
+/* Nav links — mint */
+.header__menu-item,
+.header__menu-item span,
+.list-menu__item--link,
+.header__active-menu-item {
+  color: #4AD4A8 !important;
+}
+
+.header__menu-item:hover,
+.header__menu-item:hover span,
+.list-menu__item--link:hover {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+/* Mobile drawer nav links — mint */
+.mobile-facets__disclosure .list-menu__item--link,
+.menu-drawer .list-menu__item--link,
+.menu-drawer__navigation .list-menu__item--link {
+  color: #4AD4A8 !important;
+}
+
 /* ============================================
    HERO / IMAGE BANNER
    ============================================ */
